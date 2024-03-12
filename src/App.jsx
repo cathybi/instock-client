@@ -1,7 +1,13 @@
 import "./App.scss";
 
+/**
+ * 
+ * @returns 
+ */
 function App() {
-  return <div>hello</div>;
+  return (
+    <p>Welcome to Stock</p>
+  );
 }
 
 export default App;
