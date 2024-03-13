@@ -68,14 +68,15 @@
 
     }
 
-    // &__link-active {
-    //     color: $primary-white;
-    //     background-color: $primary-instock-black;
+    &__link-active {
+        color: $primary-white;
+        background-color: $primary-instock-black;
+        text-decoration: none;
     
-    //     &:hover {
-    //       text-decoration: none;
-    //     }
-    //   }  
+        &:hover {
+          text-decoration: none;
+        }
+      }  
         
  }
     
