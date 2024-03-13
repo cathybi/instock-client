@@ -1,0 +1,9 @@
+.selected-warehouse {
+  display: flex;
+  flex-direction: column;
+
+  &__contact-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

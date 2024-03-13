@@ -1,12 +1,16 @@
 import "./App.scss";
+import SelectedWarehouse from "./components/SelectedWarehouse/SelectedWarehouse";
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 function App() {
   return (
-    <p>Welcome to Stock</p>
+    <div>
+      <p>Welcome to Stock</p>
+      <SelectedWarehouse />
+    </div>
   );
 }
 
