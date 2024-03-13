@@ -1,0 +1,35 @@
+@use './mixins' as *;
+
+/*-----------------------------------------------------------
+   Added mixin for Setting Mobile Font Styling
+-----------------------------------------------------------*/
+@mixin set-mobile-font($type) {
+
+    @if($type =="PageHeader") {
+        @include set-font(1.75rem, 2.25rem, 600);
+    }
+
+    @if($type =="SubHeader") {
+        @include set-font(1.25rem, 1.75rem, 600);
+    }
+
+    @if($type =="LabelFont") {
+        @include set-font(0.81rem, 1.25rem, 400);
+    }
+
+    @if($type =="TableHeader") {
+        @include set-font(0.69rem, 1rem, 400);
+    }
+
+    @if($type =="BodyLargeFont") {
+        @include set-font(0.94rem, 1.62rem, 400);
+    }
+
+    @if($type =="BodyMediumFont") {
+        @include set-font(0.81rem, 1.25rem, 400);
+    }
+
+    @if($type =="BodySmallFont") {
+        @include set-font(0.69rem, 1rem, 400);
+    }
+}
