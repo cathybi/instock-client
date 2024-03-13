@@ -2,10 +2,13 @@ import "./App.scss";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import InventoryPage from "./pages/InventoryPage/InventoryPage"
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage"
-import AddEditInventory from "./components/AddNewInventory/AddNewInventory"
-import AddEditWarehouse from "./components/AddNewWarehouse/AddNewWarehouse"
+import AddEditInventory from "./components/AddEditInventory/AddEditInventory"
+import AddEditWarehouse from "./components/AddEditWarehouse/AddEditWarehouse"
 import SelectedInventory from "./components/SelectedInventory/SelectedInventory"
 import SelectedWarehouse from "./components/SelectedWarehouse/SelectedWarehouse"
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
+
 
 function App() {
   return(
