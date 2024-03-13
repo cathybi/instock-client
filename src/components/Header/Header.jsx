@@ -12,7 +12,7 @@ import { Link, NavLink } from 'react-router-dom';
 function Header() {
     return (
         <>
-            <div className="header-background"></div>
+            <div className="header-background">
 
             <nav className="nav">
 
@@ -20,16 +20,18 @@ function Header() {
                     <img src={logo} className="nav__logo" alt="logo" />
                 </ Link>
 
-                <div className="nav__page-link">
-                    <NavLink ClassName="nav__link" to="/warehouse" >
-                        <h3 className="nav__link-title">Warehouses</h3>
+                <div className="nav__page">
+                    <NavLink activeClassName="nav__link-active" to="/warehouse" ClassName="nav__link" >
+                        <h3 className="nav__title">Warehouses</h3>
                     </ NavLink>
-                    <NavLink ClassName="nav__link" to="/inventory" >
-                        <h3 className="nav__link-title">Inventory</h3>
+                    <NavLink activeClassName="nav__link-active" to="/inventory" ClassName="nav__link" >
+                        <h3 className="nav__title">Inventory</h3>
                     </ NavLink>
                 </div>
 
             </nav>
+
+            </div>
         </>
     )
 }
