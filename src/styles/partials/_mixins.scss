@@ -1,0 +1,76 @@
+@use './variables' as *;
+
+/*------------------------------------------------------- 
+   Added Mixins and media Queries for Tablet and 
+    Desktop breakpoints 
+  -------------------------------------------------------*/
+@mixin tablet {
+    @media screen and (min-width:$tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width:$desktop-breakpoint) {
+        @content;
+    }
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for Setting Fonts of BrainFlix
+-----------------------------------------------------------*/
+@mixin set-font ($fontSize, $lineHeight, $fontWeight) {
+    font-size: $fontSize;
+    line-height: $lineHeight ;
+    font-weight: $fontWeight;
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for styling textbox
+-----------------------------------------------------------*/
+@mixin set-form-inputfeild-style {
+    border-radius: 1.25rem;
+    color: $secondary-slate;
+
+    &::placeholder {
+        color: $primary-instock-black;
+        font-size: small;
+    }
+
+    &:focus {
+        outline-color: $primary-blue;
+    }
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for Setting styling Button for site
+-----------------------------------------------------------*/
+@mixin set-button-style($screenType, $bgcolor) {
+    padding: 0 1rem;
+    border-radius: 1.25rem;
+    background-color: $bgcolor;
+    border-style: none;
+    color: $primary-white;
+
+    @if($screenType =="Mobile") {
+        height: 2.25rem;
+        width: 100%;
+    }
+
+    @if($screenType =="TabletDesktop") {
+        height: 2.36rem;
+        width: 6rem; //Change as per mockup
+    }
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for Setting styling for Icons appear 
+   on button of site 
+-----------------------------------------------------------*/
+@mixin set-icon-style($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 1.2rem;   
+    background-position-x: 0.5rem;
+}
