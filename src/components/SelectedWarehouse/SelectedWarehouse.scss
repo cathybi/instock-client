@@ -1,0 +1,108 @@
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/typography" as *;
+
+.selected-warehouse {
+  background-color: $primary-white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  position: relative;
+  top: -5rem;
+  z-index: 1;
+
+  @include tablet {
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    margin: 0 8rem;
+  }
+
+  &__nav {
+    border-bottom: 1px solid $secondary-cloud;
+    padding-left: $m-margin;
+    padding-right: $m-margin;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__back {
+    display: flex;
+  }
+
+  &__edit {
+    display: flex;
+    margin-right: 2rem;
+
+    @include tablet {
+      margin-right: 3rem;
+    }
+  }
+
+  &__title {
+    @include set-mobile-font("PageHeader");
+    padding-left: 1rem;
+  }
+
+  &__informaion {
+    padding-left: $m-margin;
+    border-bottom: 1px solid $secondary-cloud;
+
+    @include tablet {
+      display: flex;
+      border-bottom: none;
+    }
+  }
+
+  &__address-container {
+    @include tablet {
+      margin-top: 2rem;
+      width: 25%;
+    }
+  }
+
+  &__contact-container {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2rem;
+
+    @include tablet {
+      width: 80%;
+      margin: 2rem 5rem 2rem 7rem;
+      border-left: 1px solid $secondary-cloud;
+    }
+
+    @include desktop {
+      margin-left: 15rem;
+    }
+  }
+  &__contact-name {
+    @include tablet {
+      padding-left: 2rem;
+    }
+  }
+
+  &__contact-info {
+    padding-right: 2rem;
+
+    @include tablet {
+      padding-right: 8rem;
+    }
+
+    @include desktop {
+      padding-right: 15rem;
+    }
+  }
+
+  &__subtitle {
+    @include set-mobile-font("BodyMediumFont");
+    color: $secondary-slate;
+  }
+}
