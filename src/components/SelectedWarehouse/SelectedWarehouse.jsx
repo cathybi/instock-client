@@ -2,26 +2,31 @@ import "./SelectedWarehouse.scss";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function SelectedWarehouse() {
   return (
     <section className="selected-warehouse">
       <div className="selected-warehouse__nav">
         <div className="selected-warehouse__back">
-          <img
-            src={arrowBack}
-            alt="arrow back"
-            className="selected-warehouse__arrowIcon"
-          />
+          <Link className="selected-warehouse__link" to="/">
+            <img
+              src={arrowBack}
+              alt="arrow back"
+              className="selected-warehouse__arrowIcon"
+            />
+          </Link>
           <h1 className="selected-warehouse__title">Washington</h1>
         </div>
 
         <div className="selected-warehouse__edit">
-          <img
-            src={editIcon}
-            alt="edit icon"
-            className="selected-warehouse__editIcon"
-          />
+          <Link className="selected-warehouse__link" to="/">
+            <img
+              src={editIcon}
+              alt="edit icon"
+              className="selected-warehouse__editIcon"
+            />
+          </Link>
         </div>
       </div>
 
