@@ -1,0 +1,32 @@
+@use "./mixins" as *;
+
+/* Added mixin for Setting Tablet and Desktop Font Styling */
+@mixin set-desktop-tablet-font($type) {
+    @if($type =="PageHeader") {
+        @include set-font(2rem, 2.5rem, 600);
+    }
+
+    @if($type =="SubHeader") {
+        @include set-font(1.5rem, 2rem, 600);
+    }
+
+    @if($type =="LabelFont") {
+        @include set-font(0.86rem, 1.38rem, 400);
+    }
+
+    @if($type =="TableHeader") {
+        @include set-font(0.75rem, 1.13rem, 400);
+    }
+
+    @if($type =="BodyLargeFont") {
+        @include set-font(1rem, 1.75rem, 400);
+    }
+
+    @if($type =="BodyMediumFont") {
+        @include set-font(0.86rem, 1.38rem, 400);
+    }
+
+    @if($type =="BodySmallFont") {
+        @include set-font(0.75rem, 1.12rem, 400);
+    }
+}

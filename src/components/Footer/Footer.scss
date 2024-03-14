@@ -1,0 +1,19 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+    padding: 2rem 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: $secondary-slate;
+  
+    @include tablet {
+      padding-top: 4rem;
+    }
+  
+    @include desktop {
+      padding-top: 8rem;
+    }
+  }
