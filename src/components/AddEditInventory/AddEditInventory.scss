@@ -10,13 +10,14 @@
   background: $primary-white;
 
   @include tablet {
-    margin-top: -0.7rem;
+    width: 100%;
+    // margin-top: -0.7rem;
   }
 
-  @include desktop {
-    width: 1020px;
-    margin: 0 auto;
-  }
+  // @include desktop {
+  //   width: 1020px;
+  //   margin: 0 auto;
+  // }
 
   &__header {
     padding: 1.5rem 1rem 1.5rem;
@@ -107,13 +108,14 @@
     padding: 0.5rem 1.2rem;
     display: flex;
     flex-wrap: wrap;
-    // box-sizing: border-box;
+    box-sizing: border-box;
 
     @include tablet {
       padding: 1rem 2rem;
       flex-direction: column;
       flex-wrap: wrap;
       height: 13rem;
+      width: 100%;
     }
   }
 
@@ -176,9 +178,14 @@
     color: $secondary-slate;
     font-weight: 600;
   }
+}
 
-  &__information--green {
-    @include set-font(10px, normal, normal);
+.inventory__status {
+  font-weight: bold; /* You can adjust styles as needed */
+}
+
+.inventory__status.in-stock {
+  @include set-font(10px, normal, normal);
     color: $green;
     background-color: rgba($green, 0.07);
     width: 60px;
@@ -190,20 +197,21 @@
       @include set-font(12px, normal, normal);
       width: 60px;
     }
-  }
+}
 
+.inventory__status.out-of-stock {
   &__information--red {
-    @include set-font(10px, normal, normal);
-    color: $red;
-    background-color: rgba($red, 0.07);
-    width: 60px;
-    padding: 0.1rem 0.2rem;
-    text-align: center;
-    border-radius: 20px;
-
-    @include tablet {
-      @include set-font(12px, normal, normal);
-      width: 80px;
-    }
-  }
+      @include set-font(10px, normal, normal);
+      color: $red;
+      background-color: rgba($red, 0.07);
+      width: 60px;
+      padding: 0.1rem 0.2rem;
+      text-align: center;
+      border-radius: 20px;
+  
+      @include tablet {
+        @include set-font(12px, normal, normal);
+        width: 80px;
+      }
+}
 }

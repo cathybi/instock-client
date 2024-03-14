@@ -54,10 +54,13 @@ function AddEditInventory() {
                         {/* <p className={inventoryItem.status === "In Stock" ? "inventory-item__information--green" : "inventory-item__information--red"} > 
                             {inventoryItem.status}
                         </p> */}
-                        <p className={inventoryItem.status === "In Stock" ? "inventory-item__information--green" : "inventory-item__information--red"} > 
+                        {/* <p className={inventoryItem.status === "In Stock" ? "inventory-item__information--green" : "inventory-item__information--red"} > 
                             {"In Stock"}
-                        </p>
-                        
+                        </p> */}
+                        <div className={`inventory__status ${inventoryItem.status === "In Stock" ? "in-stock" : "out-of-stock"}`}>
+                            {/* {inventoryItem.status} */}
+                            {"In Stock"}
+                        </div>  
                     </div>
 
                     <div className="inventory-item__details-quantity">
