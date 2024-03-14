@@ -19,10 +19,11 @@ $background-light-grey: #f7f8f9;
 $green: #158463;
 $red: #c94515;
 
-/*Margin varibles for all breakpoints*/
+/*Margin and spacing varibles for all breakpoints*/
 $m-margin: 1rem;
-$t-margin: 1.5rem;
-$d-margin: 2rem;
+$t-margin: 2rem;
+$d-margin: 8rem;
+$m-spacing-between : 1.5rem;
 
 /*Icons Path */
 $plus-icon-url: ""; //we need to add plus svg

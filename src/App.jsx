@@ -16,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
+          <Route path="/" element={<WarehousesPage />} />
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/warehouse" element={<WarehousesPage />} />
           <Route path="/warehousedetails" element={<WarehousesDetailsPage />} />
