@@ -9,12 +9,12 @@
     height: 12.5rem;
 
     @include tablet {
-        height:10rem;
+        height: 10rem;
     }
 
     @include desktop {
-        height:11.5rem;
-    }    
+        height: 11.5rem;
+    }
 }
 
 .nav {
@@ -27,16 +27,16 @@
         flex-direction: row;
         justify-content: space-around;
         margin-left: $t-margin;
-        margin-right: 0.8rem;        
+        margin-right: 0.8rem;
     }
 
     @include desktop {
-        margin:0 $d-margin;           
+        margin: 0 $d-margin;
     }
 
     &__logo {
         height: 1.8rem;
-    }   
+    }
 
     &__page {
         display: flex;
@@ -57,7 +57,7 @@
 
     &__title {
         color: $secondary-cloud;
-        text-decoration: none;       
+        text-decoration: none;
         padding-top: 0.3rem;
         width: 9rem;
         text-align: center;
@@ -65,24 +65,24 @@
         @include set-mobile-font("LabelFont");
 
         @include tablet {
-            width: 6.5rem; 
-            height:2.5rem;
+            width: 6.5rem;
+            height: 2.5rem;
             padding-top: 0.5rem;
             text-align: center;
-            @include set-desktop-tablet-font("LabelFont");           
+            @include set-desktop-tablet-font("LabelFont");
         }
 
         &:hover {
             text-decoration: underline;
             color: $primary-white;
         }
+    }
 
-        &--active {
-            color: $primary-white;
-            outline: none;
-            background-color: $primary-instock-black;
-            border-radius: 1.25rem;
-            text-decoration: none;
-        }
+    & .active {
+        color: $primary-white;
+        outline: none;
+        background-color: $primary-instock-black;
+        border-radius: 1.25rem;
+        text-decoration: none;
     }
 }
