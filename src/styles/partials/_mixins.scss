@@ -33,13 +33,13 @@
     color: $secondary-slate;
 
     &::placeholder {
-        color: $primary-instock-black;
+        color: $secondary-slate;
         font-size: small;
     }
 
-    // &:focus {
-    //     outline-color: $primary-blue;
-    // }
+    &:focus {
+        outline-color: $primary-instock-indigo;
+    }
 }
 
 /*-----------------------------------------------------------
