@@ -14,7 +14,7 @@
 
     @include desktop {
         height:11.5rem;
-    }
+    }    
 }
 
 .nav {
@@ -77,7 +77,7 @@
             color: $primary-white;
         }
 
-        &:active {
+        &--active {
             color: $primary-white;
             outline: none;
             background-color: $primary-instock-black;
