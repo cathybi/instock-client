@@ -1,83 +1,88 @@
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/typography" as *;
-@use "../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
 
-
-
-
-.header-background {
+.header {
     background-color: $background-graphite;
-    height: 250px;
+    height: 12.5rem;
+
+    @include tablet {
+        height:10rem;
+    }
+
+    @include desktop {
+        height:11.5rem;
+    }    
 }
 
 .nav {
-    box-sizing: border-box;
-    padding: 1.2rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    margin: 0 0.8rem;
+
     @include tablet {
         flex-direction: row;
         justify-content: space-around;
-        margin-left: 5%;
+        margin-left: $t-margin;
+        margin-right: 0.8rem;        
     }
+
     @include desktop {
-        padding: 2% 10%;
+        margin:0 $d-margin;           
     }
 
     &__logo {
-        height: 40px;          
-    }
+        height: 1.8rem;
+    }   
 
     &__page {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        width: 100%; 
-        margin-top: 1rem; 
+        width: 100%;
         text-decoration: none;
+
         @include tablet {
             justify-content: end;
         }
     }
 
-    &__link {
-        text-decoration: none;
+    &__logo-link {
+        padding-top: $m-spacing-between;
+        padding-bottom: 1rem;
     }
 
     &__title {
-        text-decoration: none;
         color: $secondary-cloud;
-        text-decoration-style: none;
-        text-decoration: none;
-        width: 150px;
-        height: 35px;
-        border-radius: 15px;
+        text-decoration: none;       
+        padding-top: 0.3rem;
+        width: 9rem;
         text-align: center;
-        font-size: 18px;
-        &:hover{
+        height: 2rem;
+        @include set-mobile-font("LabelFont");
+
+        @include tablet {
+            width: 6.5rem; 
+            height:2.5rem;
+            padding-top: 0.5rem;
+            text-align: center;
+            @include set-desktop-tablet-font("LabelFont");           
+        }
+
+        &:hover {
             text-decoration: underline;
             color: $primary-white;
         }
-        &:active {
+
+        &--active {
             color: $primary-white;
+            outline: none;
             background-color: $primary-instock-black;
+            border-radius: 1.25rem;
             text-decoration: none;
         }
-
     }
-
-    &__link-active {
-        color: $primary-white;
-        background-color: $primary-instock-black;
-        text-decoration: none;
-    
-        &:hover {
-          text-decoration: none;
-        }
-      }  
-        
- }
-    
-
+}
