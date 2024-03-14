@@ -1,12 +1,10 @@
 import "./WarehousesPage.scss"
 
-function WarehousesPage() {
+const WarehousesPage = () => {
     return(
         <>
-        <p>testing</p>
+        <p>Warehouse Page</p>
         </>
-
-
     )
 }
 

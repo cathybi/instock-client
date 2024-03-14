@@ -9,7 +9,6 @@ import SelectedWarehouse from "./components/SelectedWarehouse/SelectedWarehouse"
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
 
-
 function App() {
   return(
     <>
@@ -18,7 +17,7 @@ function App() {
     <Routes>
 
       <Route path="/inventory" element={< InventoryPage/>} />
-      <Route path="/warehouse" element={< WarehousesPage/>} />
+      <Route path="/" element={< WarehousesPage/>} />
       <Route path="/inventory/add" element={< AddEditInventory/>} />
       <Route path="/warehouse/add" element={< AddEditWarehouse/>} />
       <Route path="/inventory/:inventoryId" element={< SelectedInventory/>} />
