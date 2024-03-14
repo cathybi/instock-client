@@ -5,8 +5,21 @@
 @use "./../../styles/partials/typography" as *;
 
 .selected-warehouse {
+  background-color: $primary-white;
   display: flex;
   flex-direction: column;
+  margin: 0 1rem;
+  position: relative;
+  top: -5rem;
+  z-index: 1;
+
+  @include tablet {
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    margin: 0 8rem;
+  }
 
   &__nav {
     border-bottom: 1px solid $secondary-cloud;
