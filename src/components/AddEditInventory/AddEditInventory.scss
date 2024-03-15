@@ -75,7 +75,7 @@
       color: $primary-white;
       right: 0.8rem;
       top: 0.6rem;
-    //   @include set-button-style;
+      @include set-button-style ("Mobile", $primary-instock-indigo);
     }
   }
 
