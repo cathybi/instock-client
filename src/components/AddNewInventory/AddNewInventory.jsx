@@ -79,6 +79,13 @@ function AddNewInventory() {
 
           <div className="new-inventory__warehouse">
             <div className="new-inventory__form-header">Warehouse</div>
+            <div className="new-inventory__form">
+              <input
+                type="text"
+                className="new-inventory__input"
+                placeholder="Please select"
+              />
+            </div>
           </div>
         </div>
       </div>
