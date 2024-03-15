@@ -1,81 +1,89 @@
-@use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/typography" as *;
-@use "../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
 
+.header {
+  background-color: $background-graphite;
+  height: 12.5rem;
+  position: relative;
 
+  @include tablet {
+    height: 10rem;
+  }
 
-
-.header-background {
-    background-color: $background-graphite;
-    height: 250px;
+  @include desktop {
+    height: 11.5rem;
+  }
 }
 
 .nav {
-    box-sizing: border-box;
-    padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0.8rem;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: $t-margin;
+    margin-right: 0.8rem;
+  }
+
+  @include desktop {
+    margin: 0 $d-margin;
+  }
+
+  &__logo {
+    height: 1.8rem;
+  }
+
+  &__page {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    text-decoration: none;
+
     @include tablet {
-        flex-direction: row;
-        justify-content: space-around;
-        margin-left: 5%;
+      justify-content: end;
     }
-    @include desktop {
-        padding: 2% 10%;
-    }
+  }
 
-    &__logo {
-        height: 40px;          
-    }
+  &__logo-link {
+    padding-top: $m-spacing-between;
+    padding-bottom: 1rem;
+  }
 
-    &__page {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%; 
-        margin-top: 1rem; 
-        text-decoration: none;
-        @include tablet {
-            justify-content: end;
-        }
-    }
+  &__title {
+    color: $secondary-cloud;
+    text-decoration: none;
+    padding-top: 0.3rem;
+    width: 9rem;
+    text-align: center;
+    height: 2rem;
+    @include set-mobile-font("LabelFont");
 
-    &__link {
-        text-decoration: none;
+    @include tablet {
+      width: 6.5rem;
+      height: 2.5rem;
+      padding-top: 0.5rem;
+      text-align: center;
+      @include set-desktop-tablet-font("LabelFont");
     }
 
-    &__title {
-        text-decoration: none;
-        color: $secondary-cloud;
-        width: 150px;
-        height: 35px;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 18px;
-        &:hover{
-            text-decoration: underline;
-            color: $primary-white;
-        }
-        &:active {
-            color: $primary-white;
-            background-color: $primary-instock-black;
-            text-decoration: none;
-        }
-
+    &:hover {
+      text-decoration: underline;
+      color: $primary-white;
     }
+  }
 
-    &__link-active {
-        color: $primary-white;
-        background-color: $primary-instock-black;
-        text-decoration: none;
-    
-        &:hover {
-          text-decoration: none;
-        }
-      }  
-        
- }
-    
-
+  & .active {
+    color: $primary-white;
+    outline: none;
+    background-color: $primary-instock-black;
+    border-radius: 1.25rem;
+    text-decoration: none;
+  }
+}

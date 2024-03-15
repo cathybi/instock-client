@@ -3,29 +3,29 @@ $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
 
 /* Primary Colors */
-$primary-instock-black: #13182C;
-$primary-instock-indigo: #2E66E5;
-$primary-white: #FFFFFF;
+$primary-instock-black: #13182c;
+$primary-instock-indigo: #2e66e5;
+$primary-white: #ffffff;
 
 /* Secondary Colors */
-$secondary-slate: #5C667E;
-$secondary-cloud: #BDC5D5;
+$secondary-slate: #5c667e;
+$secondary-cloud: #bdc5d5;
 
 /*Background colors*/
 $background-graphite: #232940;
-$background-light-grey: #F7F8F9;
+$background-light-grey: #f7f8f9;
 
 /*Supporting Colors*/
 $green: #158463;
-$red: #C94515;
+$red: #c94515;
 
-/*Margin varibles for all breakpoints*/
+/*Margin and spacing varibles for all breakpoints*/
 $m-margin: 1rem;
-$t-margin: 1.5rem;
-$d-margin: 2rem;
+$t-margin: 2rem;
+$d-margin: 8rem;
+$m-spacing-between : 1.5rem;
 
 /*Icons Path */
 $plus-icon-url: ""; //we need to add plus svg
 $search-icon-url: "./../src/assets/icons/search-24px.svg"; //check path while testing
 $edit-icon-url: "./../src/assets/icons/edit-24px.svg"; //check path
-
