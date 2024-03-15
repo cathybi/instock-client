@@ -1,7 +1,7 @@
-import "./InventoryPage.scss"
+import AddNewInventory from "../../components/AddNewInventory/AddNewInventory";
+import "./InventoryPage.scss";
+
 const InventoryPage = () => {
-    return (
-        <>InventoryPage</>
-    );
-}
+  return <AddNewInventory />;
+};
 export default InventoryPage;
