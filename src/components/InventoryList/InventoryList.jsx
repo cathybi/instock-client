@@ -65,7 +65,7 @@ function InventoryList() {
                 <ul className="inventory__list">
                     <li key="0" className="inventory__tablet-li">
                         <div className="inventory__tablet-sectionwraper">
-                            <div className="inventory__tablet-section">
+                            <div className="inventory__tablet-section--left">
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">INVENTORY ITEM</h4>
                                     <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
@@ -75,13 +75,13 @@ function InventoryList() {
                                     <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                             </div>
-                            <div className="inventory__tablet-section">
+                            <div className="inventory__tablet-section--right">
                                 <div className="inventory__tablet-column">
-                                    <h4 className="inventory__tablet-header">STATUS</h4>
+                                    <h4 className="inventory__tablet-header inventory__tablet-header--status">STATUS</h4>
                                     <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                                 <div className="inventory__tablet-column">
-                                    <h4 className="inventory__tablet-header">QTY</h4>
+                                    <h4 className="inventory__tablet-header inventory__tablet-header--qty">QTY</h4>
                                     <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                                 <div className="inventory__tablet-column">
@@ -91,9 +91,7 @@ function InventoryList() {
                             </div>
                         </div>
                         <div className="inventory__tablet-action">
-                            {/* <div className="inventory__tablet-column-action"> */}
-                                <h4 className="inventory__tablet-header">ACTIONS</h4>
-                            {/* </div> */}
+                            <h4 className="inventory__tablet-header">ACTIONS</h4>
                         </div>
                     </li>
                     {
@@ -105,7 +103,7 @@ function InventoryList() {
                             <hr className="inventory__line"/>
                             <li key={inventory.id} className="inventory__li">
                                 <div className="inventory__sectionwraper">
-                                    <div className="inventory__section">
+                                    <div className="inventory__section--left">
                                         <div className="inventory__column">
                                             <h4 className="inventory__item-header">INVENTORY ITEM</h4>
                                             <div className="inventory__item-container">
@@ -119,7 +117,7 @@ function InventoryList() {
                                         </div>
                                     </div>
 
-                                    <div className="inventory__section">
+                                    <div className="inventory__section--right">
                                         <div className="inventory__column">
                                             <h4 className="inventory__item-header">STATUS</h4>
                                             <div className={inventory.status === "In Stock" ? "inventory__status inventory__in-stock" : "inventory__status inventory__out-of-stock"}>
