@@ -4,93 +4,42 @@
 
 .inventory-item {
   margin: 0 1rem 6.875rem;
-//   border-top: none;
   box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
   border-radius: 5px;
   background: $primary-white;
 
-  @include tablet {
-    width: 100%;
-    // margin-top: -0.7rem;
-  }
-
-  // @include desktop {
-  //   width: 1020px;
-  //   margin: 0 auto;
-  // }
-
-  &__header {
-    padding: 1.5rem 1rem 1.5rem;
+  &__nav {
+    border-bottom: 1px solid $secondary-cloud;
+    padding-left: $m-margin;
+    padding-right: $m-margin;
     display: flex;
-    align-items: center;
-
-    @include tablet {
-      padding: 2rem 2.25rem 1rem;
-    }
-
-    @include desktop {
-      padding: 1.7rem 2.25rem 1.1rem;
-      position: relative;
-    }
+    justify-content: space-between;
   }
 
-
-  &__heading {
-    padding-left: 0.25rem;
-
-    @include tablet {
-      padding-left: 0.5rem;
-    }
+  &__link {
+    display: flex;
+    // padding-top: 2rem;
   }
 
-  &__link-edit {
-    @include set-button-style("Mobile", $primary-instock-indigo);
-    // position: absolute;
-    right: 2rem;
-
-    @include tablet {
-      right: 3rem;
-      width: 85px;
-      height: 40px;
-      display: flex;
-      border-radius: 20px;
-    }
+  &__back {
+    display: flex;
   }
 
-  &__icon-edit {
-    @include set-icon-style('../../assets/icons/edit-24px.svg');
-    position: relative;
+  &__edit {
+    display: flex;
+    margin-right: 2rem;
 
     @include tablet {
-      padding: 0.5rem 1rem;
+      margin-right: 3rem;
     }
   }
-
-  &__icon-text {
-    visibility: hidden;
-
-    @include tablet {
-      visibility: visible;
-      position: relative;
-      color: $primary-white;
-      right: 0.8rem;
-      top: 0.6rem;
-      @include set-button-style ("Mobile", $primary-instock-indigo);
-    }
+  &__editIcon {
+    padding: 2rem;
   }
 
-  &__icon-arrow {
-    width: 20px;
-    padding-top: 0.5rem;
-
-    @include tablet {
-      width: 100%;
-    }
-  }
-
-  &__underline {
-    border-top: 1px solid $secondary-cloud;
-    width: 100%;
+  &__title {
+    // @include set-mobile-font("PageHeader");
+    padding-left: 1rem;
   }
 
   &__divider {
@@ -109,68 +58,26 @@
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-
-    @include tablet {
-      padding: 1rem 2rem;
-      flex-direction: column;
-      flex-wrap: wrap;
-      height: 13rem;
-      width: 100%;
-    }
   }
 
-  
-  
-
-//   &__details,
-//   &__details-status,
-//   &__details-quantity {
-//     padding: 0.4rem 0;
-
-//     @include tablet {
-//       padding: 1rem 0;
-//     }
-//   }
+  &__information {
+    @include tablet {
+      width: 20rem;
+    }
+  }
 
   &__details {
     width: 100%;
 
-    @include tablet {
-      width: 40%;
-      padding-right: 6rem;
-    }
-
-    @include tablet {
-      width: 50%;
-      padding-right: 2.5rem;
-    }
   }
 
   &__details-status {
     width: 40%;
-
-    @include tablet {
-      width: 10%;
-    }
   }
+
   &__details-quantity {
     width: 40%;
     padding-left: 15%;
-
-    @include tablet {
-      width: 10%;
-    }
-  }
-
-  &__details-quantity {
-    @include tablet {
-      order: 1;
-      margin-left: -12rem;
-    }
-
-    @include desktop {
-      margin-left: -17rem;
-    }
   }
 
   &__subheading {
@@ -181,37 +88,34 @@
 }
 
 .inventory__status {
-  font-weight: bold; /* You can adjust styles as needed */
-}
-
-.inventory__status.in-stock {
-  @include set-font(10px, normal, normal);
-    color: $green;
-    background-color: rgba($green, 0.07);
-    width: 60px;
-    padding: 0.1rem;
-    text-align: center;
-    border-radius: 20px;
-
-    @include tablet {
-      @include set-font(12px, normal, normal);
+  font-weight: bold;
+  &.in-stock {
+    @include set-font(10px, normal, normal);
+      color: $green;
+      background-color: rgba($green, 0.07);
       width: 60px;
-    }
-}
-
-.inventory__status.out-of-stock {
-  &__information--red {
-      @include set-font(10px, normal, normal);
-      color: $red;
-      background-color: rgba($red, 0.07);
-      width: 60px;
-      padding: 0.1rem 0.2rem;
+      padding: 0.1rem;
       text-align: center;
       border-radius: 20px;
   
       @include tablet {
         @include set-font(12px, normal, normal);
-        width: 80px;
+        width: 60px;
       }
+  }
+
+  &.out-of-stock {
+    @include set-font(10px, normal, normal);
+    color: $red;
+    background-color: rgba($red, 0.07);
+    width: 60px;
+    padding: 0.1rem 0.2rem;
+    text-align: center;
+    border-radius: 20px;
+
+    @include tablet {
+      @include set-font(12px, normal, normal);
+      width: 80px;
+    }
 }
 }
