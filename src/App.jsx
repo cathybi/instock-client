@@ -6,7 +6,6 @@ import WarehousesDetailsPage from "./pages/WarehousesDetailsPage/WarehousesDetai
 import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 import AddEditWarehouse from "./components/AddEditWarehouse/AddEditWarehouse";
 import SelectedInventory from "./components/SelectedInventory/SelectedInventory";
-import SelectedWarehouse from "./components/SelectedWarehouse/SelectedWarehouse";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
