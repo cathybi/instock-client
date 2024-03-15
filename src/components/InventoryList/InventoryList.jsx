@@ -68,25 +68,25 @@ function InventoryList() {
                             <div className="inventory__tablet-section">
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">INVENTORY ITEM</h4>
-                                    <img className="inventory__tablet-icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">CATEGORY</h4>
-                                    <img className="inventory__tablet-icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                             </div>
                             <div className="inventory__tablet-section">
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">STATUS</h4>
-                                    <img className="inventory__tablet-icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">QTY</h4>
-                                    <img className="inventory__tablet-icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">WAREHOUSE</h4>
-                                    <img className="inventory__tablet-icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ function InventoryList() {
                                             <h4 className="inventory__item-header">INVENTORY ITEM</h4>
                                             <div className="inventory__item-container">
                                                 <div className="inventory__item--blue">{inventory.item_name}</div>
-                                                <img className="inventory__item-icon" src={rightIcon}/>
+                                                <img className="inventory__item-icon" alt="right icon" src={rightIcon}/>
                                             </div>
                                         </div>
                                         <div className="inventory__column">
@@ -138,8 +138,8 @@ function InventoryList() {
                                 </div>
 
                                 <div className="inventory__actions">
-                                    <img src={deleteIcon} onClick={handleDelete} />
-                                    <img src={editIcon} onClick={handleEdit} />
+                                    <img src={deleteIcon} alt="delete icon" onClick={handleDelete} />
+                                    <img src={editIcon} alt="edit icon" onClick={handleEdit} />
                                 </div>
                             </li>
                             </>
