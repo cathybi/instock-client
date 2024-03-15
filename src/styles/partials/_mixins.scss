@@ -28,38 +28,62 @@
 /*-----------------------------------------------------------
    Added common Mixins for styling textbox
 -----------------------------------------------------------*/
-@mixin set-form-inputfeild-style {
+@mixin set-form-inputfeild-style($screenType) {
+    border: 1px solid $secondary-cloud;
     border-radius: 1.25rem;
     color: $secondary-slate;
+    background-image: url($search-icon-url);
+    background-repeat: no-repeat;
+    padding: 1rem;
+    background-position: calc(100% - 1rem) center;
+    height: 2.375rem;
 
-    &::placeholder {
-        color: $primary-instock-black;
-        font-size: small;
+    @if($screenType == "Mobile") {
+        width: 100%;
     }
 
-    &:focus {
-        outline-color: $primary-blue;
+    @if($screenType == "Tablet") {
+        width: 12rem;
     }
+
+    @if($screenType == "Desktop") {
+        width: 17.125rem;
+    }
+
+    // &::placeholder {
+    //     color: $primary-instock-black;
+    //     font-size: small;
+    // }
+
+    // &:focus {
+    //     outline-color: $primary-blue;
+    // }
 }
 
 /*-----------------------------------------------------------
    Added common Mixins for Setting styling Button for site
 -----------------------------------------------------------*/
 @mixin set-button-style($screenType, $bgcolor) {
-    padding: 0 1rem;
+    padding: 1rem;
     border-radius: 1.25rem;
     background-color: $bgcolor;
     border-style: none;
     color: $primary-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.375rem;
 
     @if($screenType =="Mobile") {
-        height: 2.25rem;
         width: 100%;
     }
 
-    @if($screenType =="TabletDesktop") {
-        height: 2.36rem;
-        width: 6rem; //Change as per mockup
+    @if($screenType =="Tablet") {
+        width: 8rem;
+    }
+
+    @if($screenType =="Desktop") {
+        width: 8rem;
     }
 }
 
