@@ -6,13 +6,12 @@ import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import WarehousesDetailsPage from "./pages/WarehousesDetailsPage/WarehousesDetailsPage";
 import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 import AddEditWarehouse from "./components/AddEditWarehouse/AddEditWarehouse";
-import SelectedWarehouse from "./components/SelectedWarehouse/SelectedWarehouse";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -28,12 +27,12 @@ function App() {
           />
           <Route
             path="/warehouse/:warehouseId"
-            element={<SelectedWarehouse />}
+            element={<WarehousesDetailsPage />}
           />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

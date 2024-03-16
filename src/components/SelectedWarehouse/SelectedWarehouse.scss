@@ -8,17 +8,18 @@
   background-color: $primary-white;
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  padding: 0;
+  padding: 0;
+  margin: -4.4rem 1rem 0 1rem;
   position: relative;
-  top: -5rem;
   z-index: 1;
 
   @include tablet {
-    margin: 0 2rem;
+      margin: -5.2rem 2rem 0 2rem;
   }
 
   @include desktop {
-    margin: 0 8rem;
+      margin: -5.2rem 8rem 0 8rem;
   }
 
   &__nav {
@@ -26,13 +27,28 @@
     padding-left: $m-margin;
     padding-right: $m-margin;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 
   &__link {
     display: flex;
   }
-
+  &__link-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #2E66E6;
+  }
+  &__editIcon {
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+  }
   &__back {
     display: flex;
   }
@@ -50,21 +66,35 @@
     @include set-mobile-font("PageHeader");
     padding-left: 1rem;
   }
+  &__details {
+    @include set-mobile-font("LabelFont");
+  }
 
   &__informaion {
     padding-left: $m-margin;
     border-bottom: 1px solid $secondary-cloud;
+    padding: 0 2rem;
 
     @include tablet {
       display: flex;
+      justify-content: center;
+      align-items: center;
       border-bottom: none;
     }
   }
 
   &__address-container {
     @include tablet {
-      margin-top: 2rem;
-      width: 25%;
+      // margin-top: 2rem;
+      width: 30%;
+    }
+  }
+  &__address-group {
+    display: flex;
+    gap: 0.2rem;
+    @include tablet {
+      display: block;
+      gap: 0;
     }
   }
 
@@ -75,7 +105,7 @@
 
     @include tablet {
       width: 80%;
-      margin: 2rem 5rem 2rem 7rem;
+      margin: 2rem 2rem 2rem 7rem;
       border-left: 1px solid $secondary-cloud;
     }
 
@@ -89,15 +119,23 @@
     }
   }
 
+  &__hr {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
   &__contact-info {
     padding-right: 2rem;
 
     @include tablet {
-      padding-right: 8rem;
+      // padding-right: 8rem;
     }
 
     @include desktop {
-      padding-right: 15rem;
+      // padding-right: 15rem;
     }
   }
 

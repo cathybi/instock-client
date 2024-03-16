@@ -1,10 +1,10 @@
 import "./SelectedWarehouse.scss";
-import editIcon from "../../assets/icons/edit-24px.svg";
+import editIcon from "../../assets/icons/edit_white-24px.svg";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SelectedWarehouse() {
+function SelectedWarehouse({warehouseDetail}) {
   return (
     <section className="selected-warehouse">
       <div className="selected-warehouse__nav">
@@ -16,11 +16,11 @@ function SelectedWarehouse() {
               className="selected-warehouse__arrowIcon"
             />
           </Link>
-          <h1 className="selected-warehouse__title">Washington</h1>
+          <h1 className="selected-warehouse__title">{warehouseDetail.warehouse_name}</h1>
         </div>
 
         <div className="selected-warehouse__edit">
-          <Link className="selected-warehouse__link" to="/">
+          <Link className="selected-warehouse__link selected-warehouse__link-edit" to="/">
             <img
               src={editIcon}
               alt="edit icon"
@@ -33,21 +33,23 @@ function SelectedWarehouse() {
       <div className="selected-warehouse__informaion">
         <div className="selected-warehouse__address-container">
           <p className="selected-warehouse__subtitle">WAREHOUSE ADDRESS:</p>
-          <p className="selected-warehouse__details">
-            33 Pearl Street SW, Washington, USA
-          </p>
+          <div className="selected-warehouse__address-group">
+            <p className="selected-warehouse__details">{warehouseDetail.address},</p>
+            <p className="selected-warehouse__details">{warehouseDetail.city}, {warehouseDetail.country}</p>
+          </div>
+
         </div>
         <div className="selected-warehouse__contact-container">
           <div className="selected-warehouse__contact-name">
             <p className="selected-warehouse__subtitle">CONTACT NAME:</p>
-            <p className="selected-warehouse__details">Graeme Lyon</p>
-            <p className="selected-warehouse__details">Warehouse Manager</p>
+            <p className="selected-warehouse__details">{warehouseDetail.contact_name}</p>
+            <p className="selected-warehouse__details">{warehouseDetail.contact_position}</p>
           </div>
 
           <div className="selected-warehouse__contact-info">
             <p className="selected-warehouse__subtitle">CONTACT INFORMATION:</p>
-            <p className="selected-warehouse__details">+1(647) 504-0911</p>
-            <p className="selected-warehouse__details">glyon@instock.com</p>
+            <p className="selected-warehouse__details">{warehouseDetail.contact_phone}</p>
+            <p className="selected-warehouse__details">{warehouseDetail.contact_email}</p>
           </div>
         </div>
       </div>
