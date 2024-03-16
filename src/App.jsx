@@ -1,11 +1,11 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
+import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsPage";
 import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
 import WarehousesDetailsPage from "./pages/WarehousesDetailsPage/WarehousesDetailsPage";
 import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 import AddEditWarehouse from "./components/AddEditWarehouse/AddEditWarehouse";
-import SelectedInventory from "./components/SelectedInventory/SelectedInventory";
 import SelectedWarehouse from "./components/SelectedWarehouse/SelectedWarehouse";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -24,7 +24,7 @@ function App() {
           <Route path="/warehouse/add" element={<AddEditWarehouse />} />
           <Route
             path="/inventory/:inventoryId"
-            element={<SelectedInventory />}
+            element={<InventoryDetailsPage />}
           />
           <Route
             path="/warehouse/:warehouseId"

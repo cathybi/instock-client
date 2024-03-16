@@ -1,0 +1,112 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.inventory-item {
+  &__nav {
+    border-bottom: 1px solid $secondary-cloud;
+    padding-left: $m-margin;
+    padding-right: $m-margin;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__back {
+    display: flex;
+  }
+
+  &__edit {
+    display: flex;
+    margin-right: 2rem;
+
+    @include tablet {
+      margin-right: 3rem;
+    }
+  }
+
+  &__editIcon {
+    padding: 2rem;
+  }
+
+  &__title {
+    padding-left: 1rem;
+  }
+}
+
+.inventory-description {
+  padding-left: $m-margin;
+  padding-right: $m-margin;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.box-two {
+  width: 15rem;
+  height: 15rem;
+  padding-right: 5%;
+  display: flex;
+  justify-content: space-between;
+
+  @include tablet {
+    padding-left: 5%;
+    padding-right: 5%;
+    border-left: 1px solid $secondary-cloud;
+    width: 25rem;
+    height: 15rem;
+  }
+
+  @include desktop {
+    width: 35rem;
+    height: 15rem;
+  }
+}
+
+.heading {
+  padding-bottom: 0.1rem;
+  color: $secondary-slate;
+  font-weight: 600;
+}
+
+.status {
+  padding-bottom: 0.1rem;
+  color: $secondary-slate;
+  font-weight: 600;
+
+  &.in-stock {
+    @include set-font(10px, normal, normal);
+    color: $green;
+    background-color: rgba($green, 0.07);
+    width: 60px;
+    padding: 0.1rem;
+    text-align: center;
+    border-radius: 20px;
+
+    @include tablet {
+      @include set-font(12px, normal, normal);
+      width: 60px;
+    }
+  }
+
+  &.out-of-stock {
+    @include set-font(10px, normal, normal);
+    color: $red;
+    background-color: rgba($red, 0.07);
+    width: 60px;
+    padding: 0.1rem 0.2rem;
+    text-align: center;
+    border-radius: 20px;
+
+    @include tablet {
+      @include set-font(12px, normal, normal);
+      width: 80px;
+    }
+  }
+}
