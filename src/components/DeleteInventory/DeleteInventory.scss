@@ -1,0 +1,105 @@
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
+
+.delete {
+    position: absolute;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 4%;
+    background-color: $primary-white;
+    box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
+
+    @include tablet {
+        margin: auto;
+        width: 77%;
+        padding: 2% 2% 4% 8%;
+        border-radius: 4px;
+        margin-left: 10%;
+
+        @include desktop {
+            width: 50%;
+            padding: 1% 1% 2% 4%;
+            margin-left: 25%;
+        }
+    }
+
+    &__close-icon {
+        height: 25px;
+        margin-left: auto;
+    }
+
+    &__text-container {
+        margin: 0;
+        margin-bottom: 90vw;
+
+        @include tablet {
+            margin-bottom: 0;
+            width: 90%;
+        }
+    }
+
+    &__text-container-title {
+        @include tablet {
+            margin: 0 0;
+            font-size: 1.9rem;
+        }
+    }
+
+    &__text-container-subtitle {
+        @include tablet {
+            width: 91%;
+
+            font-size: 0.96rem;
+            margin-bottom: 10%;
+        }
+    }
+
+    &__button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        @include tablet {
+            align-items: right;
+            margin-left: auto;
+            width: 30%;
+            justify-content: space-between;
+
+            @include desktop {
+                padding-right: 6%;
+            }
+        }
+
+        &-cancel {
+            border: 1.5px solid $secondary-cloud;
+            background-color: $primary-white;
+            color: $background-graphite;
+            border-radius: 20px;
+
+            min-width: 45%;
+            height: 36px;
+            padding: 0;
+
+            @include tablet {}
+        }
+
+        &-delete {
+            border-style: none;
+            border-radius: 20px;
+            color: $primary-white;
+            background-color: $red;
+
+            min-width: 45%;
+            height: 36px;
+            padding: 0;
+
+            @include tablet {}
+        }
+    }
+}
