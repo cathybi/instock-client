@@ -36,7 +36,8 @@
 
     &__text-container {
         margin: 0;
-        margin-bottom: 90vw;
+        margin-bottom: 100vw;
+        // margin-bottom: 30px;
 
         @include tablet {
             margin-bottom: 0;

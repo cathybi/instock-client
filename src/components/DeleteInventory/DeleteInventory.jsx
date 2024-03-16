@@ -2,12 +2,12 @@ import "./DeleteInventory.scss";
 import closeIcon from "../../assets/icons/close-24px.svg";
 
 
-function DeleteInventory() {
+function DeleteInventory({ onCancel, onDelete }) {
 
     return (
         <>
             <section className="delete">
-                <img className="delete__close-icon" src={closeIcon} alt="Close" />
+                <img className="delete__close-icon" src={closeIcon} alt="Close" onClick={onCancel} />
 
                 <div className="delete__text-container">
                     <h1 className="delete__text-container-title">Delete Television inventory item?</h1>
@@ -18,8 +18,8 @@ function DeleteInventory() {
                 </div>
 
                 <div className="delete__button-container">
-                    <button className="delete__button-container-cancel">Cancel</button>
-                    <button onClick className="delete__button-container-delete"> Delete </button>
+                    <button className="delete__button-container-cancel" onClick={onCancel} >Cancel</button>
+                    <button className="delete__button-container-delete" onClick={onDelete} > Delete </button>
                 </div>
             </section>
         </>
