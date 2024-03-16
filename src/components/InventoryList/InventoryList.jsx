@@ -1,5 +1,6 @@
 import "./InventoryList.scss"
 import React, { useRef, useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { InStockApi } from "../../utils/Util";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -22,7 +23,6 @@ function InventoryList() {
         searchRef.current.value = "";
         initInventoryList();
     }, []);
-    
 
     function handleSearch(event) {
         event.preventDefault();
@@ -60,7 +60,6 @@ function InventoryList() {
                     <button className="inventory__button" onClick={handleAddItem}>+ Add New Item</button>
                 </div>
             </form>
-            
             <div>
                 <ul className="inventory__list">
                     <li key="0" className="inventory__tablet-li">
@@ -68,25 +67,25 @@ function InventoryList() {
                             <div className="inventory__tablet-section--left">
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">INVENTORY ITEM</h4>
-                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon} />
                                 </div>
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">CATEGORY</h4>
-                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon} />
                                 </div>
                             </div>
                             <div className="inventory__tablet-section--right">
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header inventory__tablet-header--status">STATUS</h4>
-                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon} />
                                 </div>
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header inventory__tablet-header--qty">QTY</h4>
-                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon} />
                                 </div>
                                 <div className="inventory__tablet-column">
                                     <h4 className="inventory__tablet-header">WAREHOUSE</h4>
-                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon}/>
+                                    <img className="inventory__tablet-icon" alt="sort icon" src={sortIcon} />
                                 </div>
                             </div>
                         </div>
@@ -97,56 +96,58 @@ function InventoryList() {
                     {
                         inventoryList &&
                         inventoryList
-                        .filter((item) => !filter || item.item_name.toLowerCase().includes(filter.toLowerCase()))
-                        .map((inventory) => (
-                            <>
-                            <hr className="inventory__line"/>
-                            <li key={inventory.id} className="inventory__li">
-                                <div className="inventory__sectionwraper">
-                                    <div className="inventory__section--left">
-                                        <div className="inventory__column">
-                                            <h4 className="inventory__item-header">INVENTORY ITEM</h4>
-                                            <div className="inventory__item-container">
-                                                <div className="inventory__item--blue">{inventory.item_name}</div>
-                                                <img className="inventory__item-icon" alt="right icon" src={rightIcon}/>
+                            .filter((item) => !filter || item.item_name.toLowerCase().includes(filter.toLowerCase()))
+                            .map((inventory) => (
+                                <>
+                                    <hr className="inventory__line" />
+                                    <li key={inventory.id} className="inventory__li">
+                                        <div className="inventory__sectionwraper">
+                                            <div className="inventory__section--left">
+                                                <div className="inventory__column">
+                                                    <h4 className="inventory__item-header">INVENTORY ITEM</h4>
+                                                    <div className="inventory__item-container">
+                                                        <Link className="inventory-item__link" to={`/inventory/${inventory.id}`}>
+                                                            <div className="inventory__item--blue">{inventory.item_name}</div>
+                                                            <img className="inventory__item-icon" alt="right icon" src={rightIcon} />
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                                <div className="inventory__column">
+                                                    <h4 className="inventory__item-header">CATEGORY</h4>
+                                                    <div className="inventory__category">{inventory.category}</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="inventory__section--right">
+                                                <div className="inventory__column">
+                                                    <h4 className="inventory__item-header">STATUS</h4>
+                                                    <div className={inventory.status === "In Stock" ? "inventory__status inventory__in-stock" : "inventory__status inventory__out-of-stock"}>
+                                                        {inventory.status.toUpperCase()}
+                                                    </div>
+                                                </div>
+                                                <div className="inventory__column">
+                                                    <h4 className="inventory__item-header">QTY</h4>
+                                                    <div className="inventory__qty">{inventory.quantity}</div>
+                                                </div>
+                                                <div className="inventory__column">
+                                                    <h4 className="inventory__item-header">WAREHOUSE</h4>
+                                                    <div className="inventory__warehouse">{inventory.warehouse_name}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="inventory__column">
-                                            <h4 className="inventory__item-header">CATEGORY</h4>
-                                            <div className="inventory__category">{inventory.category}</div>
-                                        </div>
-                                    </div>
 
-                                    <div className="inventory__section--right">
-                                        <div className="inventory__column">
-                                            <h4 className="inventory__item-header">STATUS</h4>
-                                            <div className={inventory.status === "In Stock" ? "inventory__status inventory__in-stock" : "inventory__status inventory__out-of-stock"}>
-                                                {inventory.status.toUpperCase()}
-                                            </div>
+                                        <div className="inventory__actions">
+                                            <img src={deleteIcon} alt="delete icon" onClick={handleDelete} />
+                                            <img src={editIcon} alt="edit icon" onClick={handleEdit} />
                                         </div>
-                                        <div className="inventory__column">
-                                            <h4 className="inventory__item-header">QTY</h4>
-                                            <div className="inventory__qty">{inventory.quantity}</div>
-                                        </div>
-                                        <div className="inventory__column">
-                                            <h4 className="inventory__item-header">WAREHOUSE</h4>
-                                            <div className="inventory__warehouse">{inventory.warehouse_id}</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="inventory__actions">
-                                    <img src={deleteIcon} alt="delete icon" onClick={handleDelete} />
-                                    <img src={editIcon} alt="edit icon" onClick={handleEdit} />
-                                </div>
-                            </li>
-                            </>
-                    ))
+                                    </li >
+                                </>
+                            ))
                     }
                 </ul>
             </div>
 
-        </div>
+        </div >
     );
 }
 

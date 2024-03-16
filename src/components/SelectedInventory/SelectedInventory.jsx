@@ -13,10 +13,6 @@ function AddEditInventory() {
 
   const initInventoryItem = async (inventoryId) => {
     const inventoryItem = await api.getInventoryDetail(inventoryId);
-    const warehouseDetail = await api.getWarehouseDetail(inventoryItem.warehouse_id);
-    inventoryItem.warehouse_name = warehouseDetail.warehouse_name;
-
-
     setInventoryItem(inventoryItem);
   };
 
@@ -27,15 +23,13 @@ function AddEditInventory() {
     }
   }, []);
 
-
   return (
     <>
       <div className="inventory-detail">
-{/* -------------------------------------------------- */}
         <div className="inventory-item__nav">
           <div className="inventory-item__back">
             <Link className="inventory-item__link" to="/inventory">
-              <img src={arrowBack} alt="arrow back" className="inventory-item__arrowIcon"/>
+              <img src={arrowBack} alt="arrow back" className="inventory-item__arrowIcon" />
             </Link>
             <h1 className="inventory-item__title">{inventoryItem.item_name}</h1>
           </div>
@@ -43,19 +37,11 @@ function AddEditInventory() {
           <div className="inventory-item__edit">
             <Link
               className="inventory-item__link" to={`/inventory/${inventoryItem.id}/edit`}>
-              <img src={editIcon} alt="edit icon" className="inventory-item__editIcon"/>
+              <img src={editIcon} alt="edit icon" className="inventory-item__editIcon" />
             </Link>
           </div>
         </div>
-{/* -------------------------------------------------- */}
-
-        {/* <div className="inventory-item__underline"></div> */}
-        {/* <div className="inventory-item__divider"></div> */}
-
-{/* -------------------------------------------------- */}
         <div className="inventory-description">
-
-          {/*box-one --------------------box-one */}
           <div className="box-one">
 
             <div className="description">
@@ -68,39 +54,32 @@ function AddEditInventory() {
               <p className="item__information">{inventoryItem.category}</p>
             </div>
           </div>
-          {/*box-one --------------------box-one */}
 
-
-          {/*box-two --------------------box-two */}
           <div className="box-two">
 
-          <div className="box-status">
-                <div className="status">
-                  <h4 className="heading">STATUS:</h4>
-                  <div className={`status ${inventoryItem.status === "In Stock" ? "in-stock" : "out-of-stock"}`}>
-                    {inventoryItem.status}
-                  </div>
+            <div className="box-status">
+              <div className="status">
+                <h4 className="heading">STATUS:</h4>
+                <div className={`status ${inventoryItem.status === "In Stock" ? "in-stock" : "out-of-stock"}`}>
+                  {inventoryItem.status}
                 </div>
+              </div>
 
-                <div className="warehouse">
-                  <h4 className="heading">WAREHOUSE:</h4>
-                  <p className="warehouse__information">{inventoryItem.warehouse_name}</p>
-                </div>
+              <div className="warehouse">
+                <h4 className="heading">WAREHOUSE:</h4>
+                <p className="warehouse__information">{inventoryItem.warehouse_name}</p>
+              </div>
             </div>
-           
+
             <div className="box-quantity">
-                  <div className="quantity">
-                    <h4 className="heading">QUANTITY:</h4>
-                    <p className="quantity__information">{inventoryItem.quantity}</p>
-                  </div>
+              <div className="quantity">
+                <h4 className="heading">QUANTITY:</h4>
+                <p className="quantity__information">{inventoryItem.quantity}</p>
+              </div>
             </div>
 
           </div>
-          {/*box-two --------------------box-two */}
-
         </div>
-{/* -------------------------------------------------- */}
-
       </div>
     </>
   );

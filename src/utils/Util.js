@@ -19,7 +19,6 @@ export class InStockApi {
 
   async getInventoryDetail(inventoryId) {
     try {
-      console.log("print inventory ID " + inventoryId);
       const response = await this.axios.get("/api/inventories/" + inventoryId);
       return response.data;
     } catch (error) {
