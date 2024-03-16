@@ -1,0 +1,39 @@
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/typography" as *;
+
+.new-inventory {
+  background-color: $primary-white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  position: relative;
+  top: -5rem;
+  z-index: 1;
+
+  @include tablet {
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    margin: 0 8rem;
+  }
+
+  &__nav {
+    border-bottom: 1px solid $secondary-cloud;
+    padding-left: $m-margin;
+    padding-right: $m-margin;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__back {
+    display: flex;
+  }
+}
