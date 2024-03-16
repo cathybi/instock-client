@@ -3,24 +3,39 @@
 @use '../../styles/partials/mixins-mobile' as *;
 @use '../../styles/partials/variables' as *;
 
-.inventory {
-    background-color: white;
-    padding: 0;
-    margin: 0 1rem;
+.overlap {
+    margin: -4.3rem 1rem 0 1rem;
     position: relative;
-    top: -5rem;
     z-index: 1;
 
     @include tablet {
-        margin: 0 2rem;
+        margin: -5.5rem 2rem 0 2rem;
     }
 
     @include desktop {
-        margin: 0 8rem;
+        margin: -5.5rem 8rem 0 8rem;
+    }
+}
+
+.overlap-disable {
+    margin: -1rem 1rem;
+
+    @include tablet {
+        margin: -1rem 2rem;
     }
 
+    @include desktop {
+        margin: -1rem 8rem;
+    }
+}
+
+.inventory {
+    background-color: white;
+    padding: 0;
+
+
     &__form {
-        padding: 2rem;
+        padding: 2rem 2rem 0 2rem;
         width: 100%;
         gap: 1rem;
         display: flex;
@@ -38,9 +53,9 @@
         margin: 0 0 1rem 0;
         width: 7.2rem;
         height: 2.25rem;
-        
 
         @include tablet {
+            margin: 0;
             display: flex;
             align-items: center;
             width: 8.2rem;
@@ -114,11 +129,29 @@
             flex: 5;
         }
     }
-    &__section {
-        flex:1;
-
+    &__section--left {
+        flex: 1;
         @include tablet {
+            flex: 2;
             display: flex;
+            flex-direction: row;
+        }
+    }
+    &__section--right {
+        flex: 1;
+        @include tablet {
+            flex: 3;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &__section--right2 {
+        flex: 1;
+        @include tablet {
+            flex: 2;
+            display: flex;
+            flex-direction: row;
         }
     }
 
@@ -140,9 +173,11 @@
             display: none;
         }
     }
-    &__item-container {
-        display: flex;
-        align-items: center;
+    &__status {
+        @include tablet {
+            position: relative;
+            left: -20px;
+        }
     }
     &__item {
         color: $primary-instock-black;
@@ -151,10 +186,18 @@
         color: $primary-instock-indigo;
         @include set-mobile-font("LabelFont");
     }
+    &__item-link {
+        display: flex;
+        align-items: center;
+    }
     &__item-icon {
         width: 1rem;
         height: 1rem;
         margin-left: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+    &__item-link:hover &__item-icon {
+        transform: translateX(4px);
     }
     &__category {
         @include set-mobile-font("LabelFont");
@@ -162,7 +205,7 @@
     &__in-stock {
         font-size: 0.75rem;
         font-weight: 600;
-        width: 5rem;
+        width: 4.5rem;
         text-align: center;
         color: $green;
         background: #15846312;
@@ -172,11 +215,11 @@
     &__out-of-stock {
         font-size: 0.75rem;
         font-weight: 600;
-        width: 7rem;
+        width: 5.5rem;
         text-align: center;
         color: $red;
         background: #C9451512;
-        padding: 0.1rem 0.5rem;
+        padding: 0.1rem 0.1rem;
         border-radius: 1.25rem;
     }
     &__qty {
@@ -190,6 +233,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        margin: 1rem 0;
 
         @include tablet {
             margin: 0;
@@ -216,16 +260,31 @@
             flex: 5;
         }
     }
-    &__tablet-section {
+    &__tablet-section--left {
         @include tablet {
-            flex:1;
+            flex: 2;
+            display: flex;
+        }
+    }
+    &__tablet-section--right {
+        @include tablet {
+            flex: 3;
+            display: flex;
+        }
+    }
+    &__tablet-section--right2 {
+        @include tablet {
+            flex: 2;
             display: flex;
         }
     }
     &__tablet-action {
         @include tablet {
+            display: flex;
             flex:1;
             text-align: center;
+            align-items: center;
+            justify-content: center;
         }
     }
     &__tablet-column-action {
