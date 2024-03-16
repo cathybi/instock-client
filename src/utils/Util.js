@@ -26,4 +26,13 @@ export class InStockApi {
       throw new Error("Failed to get inventory item: " + error.message);
     }
   }
+
+  async getWarehouseDetail(id) {
+    try {
+        const response = await this.axios.get("/api/warehouses/" + id);
+        return response.data;
+    } catch (error) {
+        throw new Error("Failed to get warehouse info: " + error.message);
+    }
+}
 }
