@@ -1,0 +1,115 @@
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+
+.warehouse-list {
+    background-color: $primary-white;   
+    border:1px solid $primary-white;
+    border-radius: 4px;
+    position: relative;
+    width: 90%;     
+    left: $m-margin;
+    margin-top: -4.3rem;
+
+    &__form {
+        width:85%;
+        display:flex;
+        flex-direction: column;  
+        margin-left:$m-margin;     
+    }
+
+    &__title {
+        @include set-mobile-font("PageHeader");    
+        margin-top:2rem;  
+        margin-bottom: $m-margin; 
+    }
+
+    &__search {
+        @include set-form-inputfeild-style("Mobile");
+        margin-bottom: $m-margin; 
+
+        @include tablet {
+            @include set-form-inputfeild-style("Tablet");
+        }
+
+        @include desktop {
+            @include set-form-inputfeild-style("Desktop");
+        }
+    }
+
+    &__button {
+        @include set-button-style("Mobile", $primary-instock-indigo);
+        margin-bottom: $m-margin; 
+
+        @include tablet {
+            @include set-button-style("Tablet", $primary-instock-indigo);
+        }
+
+        @include desktop {
+            @include set-button-style("Desktop", $primary-instock-indigo);
+        }
+    }
+
+    &__list {
+        @include set-mobile-font("BodySmallFont");
+        padding:0;
+    }
+
+    &__item {
+        display:flex;
+        flex-wrap: wrap;
+        row-gap: 1rem;       
+        border-top:1px solid $secondary-cloud; 
+        @include set-mobile-font("LabelFont");  
+        margin-bottom: 1.5rem;    
+    }
+
+    &__warehouse{
+        width:45%;
+        margin-left:$m-margin; 
+        margin-top:$m-margin;
+        color: $primary-instock-indigo;
+        font-weight:600;
+    }
+
+   &__warehouse-row {
+        display:flex;
+        gap:0.3rem;
+   }
+
+    &__right-image{
+        width:1.3rem;
+    }
+
+    &__name{
+        width:45%;
+        margin-top:$m-margin;        
+    }
+
+    &__address{
+        width:45%;
+        margin-left:$m-margin;           
+    }
+
+    &__contact-info{
+        width:45%;      
+    }
+
+    &__actions {
+        width:100%;
+       display:flex;
+       justify-content: space-between;
+    }
+
+    &__actions-row {
+       margin:0 $m-margin;
+    }
+
+    &__label {
+        @include set-mobile-font("BodySmallFont"); 
+        color: $secondary-slate;
+        font-weight: 600;
+    }
+
+}
