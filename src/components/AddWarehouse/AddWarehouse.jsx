@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../AddWarehouse/AddWarehouse.scss"
 
 const baseURL = "http://localhost:8080/warehouse";
@@ -34,7 +35,10 @@ function AddWarehouse (){
 
     return (
         <section className="addWarehouse">
-            <h1 className="addWarehouse__title">Add New Warehouse</h1>
+            <div className="EditWarehouse__title--part">
+                <Link><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+                <h1 className="EditWarehouse__title">Add Wew Warehouse</h1>
+            </div>
             <form onSubmit={handleFormSubmit} className="addWarehouse__form" name="addWarehouse__form">
                 <div className="addWarehouse__text">
                     <section className="addWarehouse__details--warehouse">
@@ -62,7 +66,7 @@ function AddWarehouse (){
                     </section>
                 </div>
                 <div className="addWarehouse__button">
-                    <button className="addWarehouse__button--submit" type="submit">Add Warehouse</button>
+                    <button className="addWarehouse__button--submit" type="submit">+ Add Warehouse</button>
                     <button className="addWarehouse__button--cancel" type="cancel">Cancel</button>
                 </div>
             </form>

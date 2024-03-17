@@ -9,15 +9,28 @@
     margin: 0;
 }
 .addWarehouse {
-    padding: 1.5rem;
+    padding: 2.5rem;
+    margin: 1.5rem;
+    position: relative;
+    top: -6.5rem;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(1,1,1,0.1);
+    @include desktop {
+        margin:6rem;
+        top: -9.5rem;
+    }
     &__title {
         @include set-mobile-font("PageHeader");
         margin-bottom: 2rem;
-        padding-left: 2rem;
+        padding: 2rem;
         border-bottom: 1px solid $secondary-cloud;
         @include tablet {
             @include set-desktop-tablet-font("PageHeader")
         }
+    }
+    &__title--part {
+        display: flex;
+        align-items: baseline;
     }
     &__text {
         @include tablet {
@@ -69,20 +82,29 @@
     }
     &__button {
         display: flex;
-        right: 4rem;
-        position: absolute;
+        justify-content: center;
+        @include tablet {
+            position: absolute;
+            right: 6rem;
+        }
     }
     &__button--submit {
         @include set-button-style("Mobile", $primary-instock-indigo);
+        margin-right: 1rem;
+        width: 40%;
         @include tablet {
-            @include set-button-style("TabletDesktop", $primary-instock-indigo)
+            @include set-button-style("TabletDesktop", $primary-instock-indigo);
+            width: 9rem
         }
     }
     &__button--cancel {
         @include set-button-style("Mobile", $primary-white);
+        border-style: solid;
         color: $secondary-cloud;
+        width: 40%;
         @include tablet {
-            @include set-button-style("TabletDesktop", $primary-instock-indigo)
+            @include set-button-style("TabletDesktop", $primary-instock-indigo);
+            width: 9rem;
         }
     }
 }

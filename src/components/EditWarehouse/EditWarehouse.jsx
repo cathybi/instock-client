@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../EditWarehouse/EditWarehouse.scss"
 
 const baseURL = "http://localhost:8080/warehouse";
@@ -27,15 +28,23 @@ function EditWarehouse (){
                 `${baseURL}/${ID}`,
                 updatedWarehouse
             )
+        };
+        let ID = "";
+        if (ID!=="") {
+            updateWarehouse(ID)
+        }else {
+            updateWarehouse(defaultID)
         }
-        updateWarehouse();
         navigate("/warehouse");
         alert("Warehouse Info Updated!");
     }
 
     return (
         <section className="EditWarehouse">
-            <h1 className="EditWarehouse__title">Edit Warehouse</h1>
+            <div className="EditWarehouse__title--part">
+                <Link><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+                <h1 className="EditWarehouse__title">Edit Warehouse</h1>
+            </div>
             <form onSubmit={handleFormSubmit} className="EditWarehouse__form" name="EditWarehouse__form">
                 <div className="EditWarehouse__text">
                     <section className="EditWarehouse__details--warehouse">
