@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../EditWarehouse/EditWarehouse.scss"
 import { useEffect } from "react";
+import WarehousesPage from "../../pages/WarehousesPage/WarehousesPage";
 
 function EditWarehouse (){
 
@@ -16,7 +17,7 @@ function EditWarehouse (){
          async function getWarehouseOrigData(){
             const data_to_edit = await api.getWarehouseDetail(warehouseId);
             const form = document.getElementById("EditWarehouse__form");
-            form.elements['WarehouseName'].value = await data_to_edit.warehouse_name;
+            form.elements['WarehouseName'].value = data_to_edit.warehouse_name;
             form.elements['StreetAddress'].value = data_to_edit.address;
             form.elements['City'].value = data_to_edit.city;
             form.elements['Country'].value = data_to_edit.country;
@@ -52,7 +53,7 @@ function EditWarehouse (){
     return (
         <section className="EditWarehouse">
             <div className="EditWarehouse__title--part">
-                <Link><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+                <Link to={WarehousesPage}><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
                 <h1 className="EditWarehouse__title">Edit Warehouse</h1>
             </div>
             <form onSubmit={handleFormSubmit} className="EditWarehouse__form" id="EditWarehouse__form" name="EditWarehouse__form">
@@ -81,9 +82,11 @@ function EditWarehouse (){
                         <input type="text" name="Email" className="EditWarehouse__input" />
                     </section>
                 </div>
-                <div className="EditWarehouse__button">
-                    <button className="EditWarehouse__button--save" type="submit">Save</button>
-                    <button className="EditWarehouse__button--cancel" type="cancel">Cancel</button>
+                <div className="EditWarehouse__footer">
+                    <div className="EditWarehouse__button">
+                        <button className="EditWarehouse__button--cancel" type="cancel">Cancel</button>
+                        <button className="EditWarehouse__button--save" type="submit">Save</button>
+                    </div>
                 </div>
             </form>
         </section>

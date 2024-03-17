@@ -83,9 +83,19 @@
             font-weight: 600;
         }
     }
+    &__footer {
+        width: 100%;
+        background-color:#F7F8F9;
+        margin-left: -5rem;
+        left: 5rem;
+        position: absolute;
+        height: 5rem;
+        align-items: center;
+        display: grid;
+    }
     &__button {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         @include tablet {
             position: absolute;
             right: 6rem;
@@ -93,7 +103,7 @@
     }
     &__button--save {
         @include set-button-style("Mobile", $primary-instock-indigo);
-        margin-right: 1rem;
+        
         width: 40%;
         @include tablet {
             @include set-button-style("TabletDesktop", $primary-instock-indigo);
@@ -102,8 +112,10 @@
     }
     &__button--cancel {
         @include set-button-style("Mobile", $primary-white);
+        margin-right: 1rem;
         border-style: solid;
         color: $secondary-cloud;
+        width: 40%;
         @include tablet {
             @include set-button-style("TabletDesktop", $primary-instock-indigo);
             width: 9rem;

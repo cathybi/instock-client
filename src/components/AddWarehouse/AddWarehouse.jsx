@@ -1,13 +1,14 @@
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../AddWarehouse/AddWarehouse.scss"
+import { InStockApi } from "../../utils/Util";
+import WarehousesPage from "../../pages/WarehousesPage/WarehousesPage";
 
-const baseURL = "http://localhost:8080/warehouse";
 
 function AddWarehouse (){
 
     const navigate  = useNavigate();
+    const api = new InStockApi();
 
     function handleFormSubmit (event){
         event.preventDefault();
@@ -22,22 +23,19 @@ function AddWarehouse (){
             contact_email: event.target.Email.value
         }
         console.log(newWarehouse)
-        async function postWarehouse (){
-            const response = await axios.post(
-                `${baseURL}`,
-                newWarehouse
-            )
-        }
-        postWarehouse();
-        navigate("/warehouse");
+        async function addWarehouse (newWarehouse){
+            await api.addWarehouse(newWarehouse);
+        };
+        addWarehouse(newWarehouse);
+        navigate("/warehouse/add");
         alert("New Warehouse successfully Added!");
     }
 
     return (
         <section className="addWarehouse">
             <div className="EditWarehouse__title--part">
-                <Link><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
-                <h1 className="EditWarehouse__title">Add Wew Warehouse</h1>
+                <Link to={WarehousesPage}><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+                <h1 className="EditWarehouse__title">Add New Warehouse</h1>
             </div>
             <form onSubmit={handleFormSubmit} className="addWarehouse__form" name="addWarehouse__form">
                 <div className="addWarehouse__text">
@@ -65,9 +63,11 @@ function AddWarehouse (){
                         <input type="text" name="Email" className="addWarehouse__input" placeholder="Email"/>
                     </section>
                 </div>
-                <div className="addWarehouse__button">
-                    <button className="addWarehouse__button--submit" type="submit">+ Add Warehouse</button>
-                    <button className="addWarehouse__button--cancel" type="cancel">Cancel</button>
+                <div className="addWarehouse__footer">
+                    <div className="addWarehouse__button">
+                        <button className="addWarehouse__button--cancel" type="cancel">Cancel</button>
+                        <button className="addWarehouse__button--submit" type="submit">+ Add Warehouse</button>
+                    </div>
                 </div>
             </form>
         </section>

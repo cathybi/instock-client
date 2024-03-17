@@ -27,12 +27,20 @@ export class InStockApi {
   }
   async updateWarehouse (id,updatedWarehouse){
     try {
-      const response = await this.axios.patch(`/${id}`,updatedWarehouse);
+      const response = await this.axios.patch(`/api/warehouses/${id}`,updatedWarehouse);
       return response.data;
     } catch (error) {
       throw new Error("Failed to update warehouse: " + error.message);
     }
   }
+  async addWarehouse (newWarehouse){
+    try {
+      await this.axios.post(`/api/warehouses/`,newWarehouse);
+    } catch (error) {
+      throw new Error("Failed to update warehouse: " + error.message);
+    }
+  }
+
   async getWarehouseDetail(id) {
     try {
         const response = await this.axios.get("/api/warehouses/" + id);
