@@ -37,7 +37,7 @@ const WarehousesList = () => {
    * @param {*} event 
    */
   function handleDelete(event) {
-    event.preventDefault();  
+    event.preventDefault();
   }
 
   /**
@@ -53,24 +53,25 @@ const WarehousesList = () => {
    * @param {*} event 
    */
   function handleSearch(event) {
-    event.preventDefault();   
-  }
+    event.preventDefault();  
+  } 
 
   /**
-   * When you click on "Add New Item" button,handleAddNewItem get called
+   *  When you click on "Add New Item" button,handleSubmit get called
    * @param {*} event 
    */
-  function handleAddNewItem(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    console.log("AddNewItem button clicked.");
-  }
+    
+  } 
 
   return (
     <div className="warehouse-list">
-      <form className="warehouse-list__form">
+      <form className="warehouse-list__form"
+        onSubmit={handleSubmit}>
         <div className="warehouse-list__title">Warehouses </div>
         <input type="text" id="search" name="search" onClick={handleSearch} placeholder="Search..." className="warehouse-list__search"></input>
-        <button className="warehouse-list__button" onClick={handleAddNewItem}>+ Add New Warehouse</button>
+        <button className="warehouse-list__button">+ Add New Warehouse</button>
       </form>
 
       <ul className="warehouse-list__list">

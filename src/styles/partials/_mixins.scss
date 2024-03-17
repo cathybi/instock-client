@@ -29,12 +29,10 @@
    Added common Mixins for styling textbox
 -----------------------------------------------------------*/
 @mixin set-form-inputfeild-style($screenType) {
-    border: 1px solid $secondary-cloud;
+    border: 1.5px solid $secondary-cloud;
     border-radius: 1.25rem;
     color: $secondary-slate;    
-    background-repeat: no-repeat;
-    padding: 1rem;
-    background-position: calc(100% - 1rem) center;
+    padding: 1rem;   
     height: 2.375rem;
 
     @if($screenType == "Mobile") {
@@ -47,16 +45,15 @@
 
     @if($screenType == "Desktop") {
         width: 17.125rem;
+    }  
+
+     &:focus {
+       outline-color: $primary-instock-indigo;
     }
 
-    // &::placeholder {
-    //     color: $primary-instock-black;
-    //     font-size: small;
-    // }
-
-    // &:focus {
-    //     outline-color: $primary-blue;
-    // }
+    &--error {
+        border: 1.5px solid $red;
+    }
 }
 
 /*-----------------------------------------------------------
@@ -93,7 +90,6 @@
 @mixin set-icon-style($url) {
     background-image: url($url);
     background-repeat: no-repeat;
-    background-position: left;
-    background-size: 1.5rem;   
-    background-position-x: 0.5rem;
+    background-position: calc(100% - 1rem) center;
+    background-size: 1.5rem;  
 }
