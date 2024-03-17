@@ -7,13 +7,14 @@ import WarehousesDetailsPage from "./pages/WarehousesDetailsPage/WarehousesDetai
 import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 import AddNewInventoryPage from "./pages/AddNewInventoryPage/AddNewInventoryPage";
 import AddEditWarehouse from "./components/AddEditWarehouse/AddEditWarehouse";
-import SelectedInventory from "./components/SelectedInventory/SelectedInventory";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import DeleteInventory from "./components/DeleteInventory/DeleteInventory";
+import DeleteWarehouse from "./components/DeleteWarehouse/DeleteWarehouse";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -28,7 +29,6 @@ function App() {
           />
 
           <Route path="/warehouse/add" element={<AddEditWarehouse />} />
-
           <Route
             path="/inventory/:inventoryId"
             element={<InventoryDetailsPage />}
@@ -37,10 +37,18 @@ function App() {
             path="/warehouse/:warehouseId"
             element={<WarehousesDetailsPage />}
           />
+          <Route
+            path="/inventory/deleteInventory"
+            element={<DeleteInventory />}
+          />
+          <Route
+            path="/warehouse/deleteWarehouse"
+            element={<DeleteWarehouse />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

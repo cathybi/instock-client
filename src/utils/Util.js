@@ -17,6 +17,15 @@ export class InStockApi {
     }
   }
 
+  async getwarehousesList() {
+    try {
+      const response = await this.axios.get("/api/warehouses");
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to get Warehouse list: " + error.message);
+    }
+  }
+
   async getInventoryDetail(inventoryId) {
     try {
       const response = await this.axios.get("/api/inventories/" + inventoryId);
@@ -35,12 +44,14 @@ export class InStockApi {
     }
   }
 
-  async fetchSelectedWarehouse(id) {
+  async getWarehouseInventory(id) {
     try {
-      const response = await this.axios.get(`/api/warehouses/${id}`);
+      const response = await this.axios.get(
+        "/api/warehouses/" + id + "/inventories"
+      );
       return response.data;
     } catch (error) {
-      throw new Error("Error fetching warehouse details" + error.message);
+      throw new Error("Failed to get warehouse info: " + error.message);
     }
   }
 }

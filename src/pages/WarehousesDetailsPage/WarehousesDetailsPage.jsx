@@ -1,35 +1,35 @@
 import "./WarehousesDetailsPage.scss";
-import SelectedWarehouse from "../../components/SelectedWarehouse/SelectedWarehouse";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { InStockApi } from "../../utils/Util";
+import SelectedWarehouse from "../../components/SelectedWarehouse/SelectedWarehouse";
+import InventoryList from "../../components/InventoryList/InventoryList";
 
 function WarehousesDetailsPage() {
-  const [selectedWarehouse, setSelectedWarehouse] = useState({});
+  const [inventoryList, setInventoryList] = useState("");
+  const [warehouseDetail, setWarehouseDetail] = useState("");
+  const api = new InStockApi();
   const { warehouseId } = useParams();
 
-  const api = new InStockApi();
+  const initWarehouse = async (id) => {
+    const warehouseDetail = await api.getWarehouseDetail(id);
+    const inventoryList = await api.getWarehouseInventory(id);
+    setWarehouseDetail(warehouseDetail);
+    setInventoryList(inventoryList);
+  };
 
   useEffect(() => {
-    async function fetchSelectedWarehouse(id) {
-      try {
-        const warehouseInfo = await api.fetchSelectedWarehouse(id);
-        setSelectedWarehouse(warehouseInfo);
-      } catch (error) {
-        console.error("Error fetching warehouse details", error);
-      }
-    }
-    if (warehouseId) {
-      fetchSelectedWarehouse(warehouseId);
-    }
+    document.title = "Warehouses Details Page";
+    initWarehouse(warehouseId);
   }, [warehouseId]);
-
   if (!selectedWarehouse) {
     return <div>Loading...</div>;
   }
+
   return (
-    <div className="Warehouses-Details-Page">
-      <SelectedWarehouse selectedWarehouse={selectedWarehouse} />
+    <div className="warehouses-details-page">
+      <SelectedWarehouse warehouseDetail={warehouseDetail} />
+      <InventoryList inventoryList={inventoryList} displayWarehouse={false} />
     </div>
   );
 }
