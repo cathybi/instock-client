@@ -1,0 +1,17 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.inventorys-details-page {
+    margin: 0 1rem 6.875rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
+    border-radius: 5px;
+    background: $primary-white;
+    top: -5rem;
+    z-index: 1;
+    box-sizing: border-box;
+    margin-left: $m-margin;
+    margin-right: $m-margin;
+    position: relative;
+
+}

@@ -114,11 +114,20 @@
             flex: 5;
         }
     }
-    &__section {
-        flex:1;
+    &__section--left {
+        flex: 2;
 
         @include tablet {
             display: flex;
+            flex-direction: row;
+        }
+    }
+    &__section--right {
+        flex: 3;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
         }
     }
 
@@ -138,6 +147,12 @@
         @include set-mobile-font("LabelFont");
         @include tablet {
             display: none;
+        }
+    }
+    &__status {
+        @include tablet {
+            position: relative;
+            left: -20px;
         }
     }
     &__item-container {
@@ -162,7 +177,7 @@
     &__in-stock {
         font-size: 0.75rem;
         font-weight: 600;
-        width: 5rem;
+        width: 4.5rem;
         text-align: center;
         color: $green;
         background: #15846312;
@@ -172,11 +187,11 @@
     &__out-of-stock {
         font-size: 0.75rem;
         font-weight: 600;
-        width: 7rem;
+        width: 5.5rem;
         text-align: center;
         color: $red;
         background: #C9451512;
-        padding: 0.1rem 0.5rem;
+        padding: 0.1rem 0.1rem;
         border-radius: 1.25rem;
     }
     &__qty {
@@ -216,16 +231,25 @@
             flex: 5;
         }
     }
-    &__tablet-section {
+    &__tablet-section--left {
         @include tablet {
-            flex:1;
+            flex: 2;
+            display: flex;
+        }
+    }
+    &__tablet-section--right {
+        @include tablet {
+            flex: 3;
             display: flex;
         }
     }
     &__tablet-action {
         @include tablet {
+            display: flex;
             flex:1;
             text-align: center;
+            align-items: center;
+            justify-content: center;
         }
     }
     &__tablet-column-action {

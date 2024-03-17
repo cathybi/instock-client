@@ -1,5 +1,6 @@
 import "./InventoryList.scss";
 import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { InStockApi } from "../../utils/Util";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -69,12 +70,11 @@ function InventoryList() {
           </button>
         </div>
       </form>
-
       <div>
         <ul className="inventory__list">
           <li key="0" className="inventory__tablet-li">
             <div className="inventory__tablet-sectionwraper">
-              <div className="inventory__tablet-section">
+              <div className="inventory__tablet-section--left">
                 <div className="inventory__tablet-column">
                   <h4 className="inventory__tablet-header">INVENTORY ITEM</h4>
                   <img
@@ -92,9 +92,11 @@ function InventoryList() {
                   />
                 </div>
               </div>
-              <div className="inventory__tablet-section">
+              <div className="inventory__tablet-section--right">
                 <div className="inventory__tablet-column">
-                  <h4 className="inventory__tablet-header">STATUS</h4>
+                  <h4 className="inventory__tablet-header inventory__tablet-header--status">
+                    STATUS
+                  </h4>
                   <img
                     className="inventory__tablet-icon"
                     alt="sort icon"
@@ -102,7 +104,9 @@ function InventoryList() {
                   />
                 </div>
                 <div className="inventory__tablet-column">
-                  <h4 className="inventory__tablet-header">QTY</h4>
+                  <h4 className="inventory__tablet-header inventory__tablet-header--qty">
+                    QTY
+                  </h4>
                   <img
                     className="inventory__tablet-icon"
                     alt="sort icon"
@@ -120,9 +124,7 @@ function InventoryList() {
               </div>
             </div>
             <div className="inventory__tablet-action">
-              {/* <div className="inventory__tablet-column-action"> */}
               <h4 className="inventory__tablet-header">ACTIONS</h4>
-              {/* </div> */}
             </div>
           </li>
           {inventoryList &&
@@ -137,20 +139,25 @@ function InventoryList() {
                   <hr className="inventory__line" />
                   <li key={inventory.id} className="inventory__li">
                     <div className="inventory__sectionwraper">
-                      <div className="inventory__section">
+                      <div className="inventory__section--left">
                         <div className="inventory__column">
                           <h4 className="inventory__item-header">
                             INVENTORY ITEM
                           </h4>
                           <div className="inventory__item-container">
-                            <div className="inventory__item--blue">
-                              {inventory.item_name}
-                            </div>
-                            <img
-                              className="inventory__item-icon"
-                              alt="right icon"
-                              src={rightIcon}
-                            />
+                            <Link
+                              className="inventory-item__link"
+                              to={`/inventory/${inventory.id}`}
+                            >
+                              <div className="inventory__item--blue">
+                                {inventory.item_name}
+                              </div>
+                              <img
+                                className="inventory__item-icon"
+                                alt="right icon"
+                                src={rightIcon}
+                              />
+                            </Link>
                           </div>
                         </div>
                         <div className="inventory__column">

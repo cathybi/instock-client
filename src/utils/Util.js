@@ -17,12 +17,32 @@ export class InStockApi {
     }
   }
 
-  async fetchSelectedWarehouse(id) {
+  async getInventoryDetail(inventoryId) {
     try {
-      const response = await this.axios.get(`/api/warehouses/${id}`);
+      const response = await this.axios.get("/api/inventories/" + inventoryId);
       return response.data;
     } catch (error) {
-      throw new Error("Error fetching warehouse details" + error.message);
+      throw new Error("Failed to get inventory item: " + error.message);
     }
   }
+
+  async getWarehouseDetail(id) {
+    try {
+        const response = await this.axios.get("/api/warehouses/" + id);
+        return response.data;
+    } catch (error) {
+        throw new Error("Failed to get warehouse info: " + error.message);
+    }
 }
+
+async fetchSelectedWarehouse(id) {
+  try {
+    const response = await this.axios.get(`/api/warehouses/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching warehouse details" + error.message);
+  }
+}
+}
+
+
