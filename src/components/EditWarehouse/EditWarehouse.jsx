@@ -28,7 +28,6 @@ function EditWarehouse (){
             form.elements['PhoneNumber'].value = data_to_edit.data[0].contact_phone;
             form.elements['Email'].value = data_to_edit.data[0].contact_email;
         };
-
         getWarehouseOrigData();
     },[warehouseId]);
 
