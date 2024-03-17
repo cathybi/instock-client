@@ -1,9 +1,9 @@
 import "./WarehousesDetailsPage.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { InStockApi } from "../../utils/Util";
 import SelectedWarehouse from "../../components/SelectedWarehouse/SelectedWarehouse";
-import InventoryList from "../../components/InventoryList/InventoryList";
+import InventoryList from '../../components/InventoryList/InventoryList';
 
 function WarehousesDetailsPage() {
   const [inventoryList, setInventoryList] = useState("");
@@ -19,16 +19,13 @@ function WarehousesDetailsPage() {
   };
 
   useEffect(() => {
-    document.title = "Warehouses Details Page";
+    document.title = 'Warehouses Details Page';
     initWarehouse(warehouseId);
   }, [warehouseId]);
-  if (!selectedWarehouse) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="warehouses-details-page">
-      <SelectedWarehouse warehouseDetail={warehouseDetail} />
+      <SelectedWarehouse warehouseDetail={warehouseDetail}/>
       <InventoryList inventoryList={inventoryList} displayWarehouse={false} />
     </div>
   );
