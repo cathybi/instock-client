@@ -18,8 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<WarehousesPage />} />
-          <Route path="/inventory" element={<InventoryPage />} />
-          <Route path="/warehouse" element={<WarehousesPage />} />
+          <Route path="/inventory" element={<InventoryPage />} />        
           <Route path="/warehousedetails" element={<WarehousesDetailsPage />} />
           <Route path="/inventory/add" element={<AddEditInventory />} />
           <Route path="/warehouse/add" element={<AddEditWarehouse />} />
