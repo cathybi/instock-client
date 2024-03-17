@@ -147,7 +147,7 @@ function EditInventory() {
 
           <section className="edit-inventory__details--availablity">
             <h2 className="edit-inventory__subtitle">Item Availability</h2>
-            <p className="edit-inventory__body">Status</p>
+            <p className="edit-inventory__label">Status</p>
             <input
               type="radio"
               id="status"

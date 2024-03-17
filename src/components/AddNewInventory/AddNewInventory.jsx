@@ -1,38 +1,66 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./AddNewInventory.scss";
 
-const baseURL = "http://localhost:5050/api/inventory";
-
 function AddNewInventory() {
-  const navigate = useNavigate();
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    const newInventory = {
-      warehouse_name: event.target.WarehouseName.value,
-      item_name: event.target.ItemName.value,
-      description: event.target.Description.value,
-      category: event.target.Category.value,
-      status: event.target.Status.value,
-      quantity: event.target.Quantity.value,
-    };
-    console.log(newInventory);
-    async function addNewInventory() {
-      const response = await axios.post(`${baseURL}`, newInventory);
-    }
-    addNewInventory();
-    navigate("/inventory");
-    alert("New Inventory successfully Added!");
-  }
+  const [inventoryData, setInventoryData] = useState({
+    id: "",
+    warehouse_name: "",
+    item_name: "",
+    description: "",
+    category: "",
+    status: "",
+    quantity: 0,
+  });
 
   const [stockStatus, setStockStatus] = useState("inStock");
 
-  const handleStatusChange = (event) => {
-    setStockStatus(event.target.Status.value);
+  const handleStatusChange = (e) => {
+    setStockStatus(e.target.value);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInventoryData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log("handlesubmit:", inventoryData);
+      const response = await axios.post(
+        `http://localhost:5050/api/inventories/`,
+        inventoryData
+      );
+      console.log("Request to BackEnd:", response);
+      const {
+        id,
+        warehouse_name,
+        item_name,
+        description,
+        category,
+        status,
+        quantity,
+      } = response.data;
+      alert("Item updated successfully");
+      setInventoryData({
+        id: id,
+        warehouse_name: warehouse_name,
+        item_name: item_name,
+        description: description,
+        category: category,
+        status: status,
+        quantity: quantity,
+      });
+    } catch (error) {
+      console.error("Error updating inventory: ", error);
+    }
   };
 
   return (
@@ -58,66 +86,100 @@ function AddNewInventory() {
         <div className="new-inventory__text">
           <section className="new-inventory__details--item">
             <h2 className="new-inventory__subtitle">Item Details</h2>
-            <p className="new-inventory__label">Item Name</p>
+            <label className="new-inventory__label" htmlFor="itemName">
+              Item Name
+            </label>
             <input
               type="text"
-              name="ItemName"
+              name="item_name"
+              id="itemName"
+              value={inventoryData.item_name}
               className="new-inventory__input"
               placeholder="Item Name"
+              onChange={handleChange}
             />
-            <p className="new-inventory__label">Description</p>
+            <label className="new-inventory__label" htmlFor="description">
+              Description
+            </label>
             <input
               type="text"
-              name="Description"
-              className="new-inventory__input new-inventory__input--height"
+              name="description"
+              id="description"
+              value={inventoryData.description}
+              className="new-inventory__input"
               placeholder="Please enter a brief item description..."
+              onChange={handleChange}
             />
-            <p className="new-inventory__label">Category</p>
+            <label className="new-inventory__label" htmlFor="category">
+              Category
+            </label>
             <input
               type="text"
               name="Category"
+              id="category"
+              value={inventoryData.category}
               className="new-inventory__input"
               placeholder="Please select"
+              onChange={handleChange}
             />
           </section>
 
           <section className="new-inventory__details--availablity">
             <h2 className="new-inventory__subtitle">Item Availability</h2>
             <p className="new-inventory__label">Status</p>
-            <label className="new-inventory__body">
-              <input
-                type="radio"
-                value="inStock"
-                checked={stockStatus === "inStock"}
-                onChange={handleStatusChange}
-              />
+            <input
+              type="radio"
+              id="status"
+              name="status"
+              value="instock"
+              checked={stockStatus === "inStock"}
+              onChange={handleStatusChange}
+            />
+            <label className="new-inventory__body" htmlFor="status">
               In Stock
             </label>
-            <label className="new-inventory__body new-inventory__body--grey">
-              <input
-                type="radio"
-                value="inStock"
-                checked={stockStatus === "outOfStock"}
-                onChange={handleStatusChange}
-              />
+            <input
+              type="radio"
+              id="status"
+              name="status"
+              value="instock"
+              checked={stockStatus === "outOfStock"}
+              onChange={handleStatusChange}
+            />
+            <label
+              className="new-inventory__body new-inventory__body--grey"
+              htmlFor="status"
+            >
               Out of Stock
             </label>
 
-            <p className="new-inventory__label new-inventory__label--padding">
+            <p
+              className="new-inventory__label new-inventory__label--padding"
+              htmlFor="quantity"
+            >
               Quantity
             </p>
             <input
               type="text"
-              name="Quantity"
+              name="quantity"
+              id="quantity"
+              value={inventoryData.quantity}
               className="new-inventory__input"
-              placeholder="1"
+              placeholder="0"
+              onChange={handleChange}
             />
-            <p className="new-inventory__label">Warehouse</p>
+
+            <label className="new-inventory__label" htmlFor="warehouseName">
+              Warehouse
+            </label>
             <input
               type="text"
-              name="WarehouseName"
+              id="warehouseName"
+              name="warehouseName"
+              value={inventoryData.warehouse_name}
               className="new-inventory__input"
               placeholder="Please Select"
+              onChange={handleChange}
             />
           </section>
         </div>

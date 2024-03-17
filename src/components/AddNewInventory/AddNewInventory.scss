@@ -94,6 +94,9 @@
       padding-left: 1rem;
     }
   }
+  &__input::placeholder {
+    white-space: pre-wrap;
+  }
   &__label {
     @include set-mobile-font("LabelFont");
     font-weight: 600;
@@ -106,10 +109,7 @@
     }
   }
   &__body {
-    padding-right: 8rem;
-    @include tablet {
-      padding-right: 3rem;
-    }
+    padding-right: 3rem;
     &--grey {
       color: $secondary-slate;
     }
