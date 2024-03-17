@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../EditWarehouse/EditWarehouse.scss"
 import { useEffect } from "react";
-import axios from "axios";
 
 function EditWarehouse (){
 
@@ -15,18 +14,16 @@ function EditWarehouse (){
 
     useEffect(()=>{
          async function getWarehouseOrigData(){
-            // const data_to_edit = await api.getWarehouseDetail(id);
-            const data_to_edit = await axios.get(`http://localhost:5050/api/warehouses/${warehouseId}`);
-            console.log("data_to_edit: ",data_to_edit.data[0])
+            const data_to_edit = await api.getWarehouseDetail(warehouseId);
             const form = document.getElementById("EditWarehouse__form");
-            form.elements['WarehouseName'].value = await data_to_edit.data[0].warehouse_name;
-            form.elements['StreetAddress'].value = data_to_edit.data[0].address;
-            form.elements['City'].value = data_to_edit.data[0].city;
-            form.elements['Country'].value = data_to_edit.data[0].country;
-            form.elements['ContactName'].value = data_to_edit.data[0].contact_name;
-            form.elements['Position'].value = data_to_edit.data[0].contact_position;
-            form.elements['PhoneNumber'].value = data_to_edit.data[0].contact_phone;
-            form.elements['Email'].value = data_to_edit.data[0].contact_email;
+            form.elements['WarehouseName'].value = await data_to_edit.warehouse_name;
+            form.elements['StreetAddress'].value = data_to_edit.address;
+            form.elements['City'].value = data_to_edit.city;
+            form.elements['Country'].value = data_to_edit.country;
+            form.elements['ContactName'].value = data_to_edit.contact_name;
+            form.elements['Position'].value = data_to_edit.contact_position;
+            form.elements['PhoneNumber'].value = data_to_edit.contact_phone;
+            form.elements['Email'].value = data_to_edit.contact_email;
         };
         getWarehouseOrigData();
     },[warehouseId]);
