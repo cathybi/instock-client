@@ -28,21 +28,19 @@ export class InStockApi {
 
   async getWarehouseDetail(id) {
     try {
-        const response = await this.axios.get("/api/warehouses/" + id);
-        return response.data;
+      const response = await this.axios.get("/api/warehouses/" + id);
+      return response.data;
     } catch (error) {
-        throw new Error("Failed to get warehouse info: " + error.message);
+      throw new Error("Failed to get warehouse info: " + error.message);
     }
-}
+  }
 
-async fetchSelectedWarehouse(id) {
-  try {
-    const response = await this.axios.get(`/api/warehouses/${id}`);
-    return response.data;
-  } catch (error) {
-    throw new Error("Error fetching warehouse details" + error.message);
+  async fetchSelectedWarehouse(id) {
+    try {
+      const response = await this.axios.get(`/api/warehouses/${id}`);
+      return response.data;
+    } catch (error) {
+      throw new Error("Error fetching warehouse details" + error.message);
+    }
   }
 }
-}
-
-

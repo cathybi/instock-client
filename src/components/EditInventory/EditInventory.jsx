@@ -32,7 +32,7 @@ function EditInventory() {
         const categoriesData = response.data.map(
           (inventory) => inventory.category
         );
-        const uniqueCategories = Array.from(new Set(categoriesData)); // Ensure unique categories
+        const uniqueCategories = Array.from(new Set(categoriesData));
         setCategories(uniqueCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -41,7 +41,7 @@ function EditInventory() {
 
     fetchCategories();
   }, []);
-  // *********************************************************************
+
   const [inventoryData, setInventoryData] = useState({
     id: "",
     warehouse_name: "",
@@ -49,13 +49,12 @@ function EditInventory() {
     description: "",
     category: "",
     status: "",
-    quantity: "",
+    quantity: 0,
   });
 
   const { inventoryId } = useParams();
 
-  const [stockStatus, setStockStatus] = useState("inStock");
-
+  const [stockStatus, setStockStatus] = useState("In Stock");
   const handleStatusChange = (e) => {
     setStockStatus(e.target.value);
   };
@@ -67,7 +66,6 @@ function EditInventory() {
           `http://localhost:5050/api/inventories/${inventoryId}`
         );
         const {
-          id,
           warehouse_name,
           item_name,
           description,
@@ -77,13 +75,12 @@ function EditInventory() {
         } = response.data;
         // console.log(response.data);
         setInventoryData({
-          id: id,
           warehouse_name: warehouse_name,
           item_name: item_name,
           description: description,
           category: category,
           status: status,
-          quantity: quantity,
+          quantity: Number(quantity),
         });
       } catch (error) {
         if (error) {
@@ -110,6 +107,7 @@ function EditInventory() {
     e.preventDefault();
     try {
       console.log("handlesubmit:", inventoryData);
+      inventoryData.status = stockStatus;
       const response = await axios.put(
         `http://localhost:5050/api/inventories/${inventoryId}`,
         inventoryData
@@ -140,8 +138,8 @@ function EditInventory() {
         className="edit-inventory__form"
         name="edit-inventory__form"
       >
-        <div className="edit-inventory__text">
-          <section className="edit-inventory__details--item">
+        <section className="edit-inventory__text">
+          <div className="edit-inventory__details--item">
             <h2 className="edit-inventory__subtitle">Item Details</h2>
             <label className="edit-inventory__label" htmlFor="itemName">
               Item Name
@@ -186,17 +184,17 @@ function EditInventory() {
                 </option>
               ))}
             </select>
-          </section>
+          </div>
 
-          <section className="edit-inventory__details--availablity">
+          <div className="edit-inventory__details--availablity">
             <h2 className="edit-inventory__subtitle">Item Availability</h2>
             <p className="edit-inventory__label">Status</p>
             <input
               type="radio"
               id="status"
               name="status"
-              value="instock"
-              checked={stockStatus === "inStock"}
+              value="In Stock"
+              checked={stockStatus === "In Stock"}
               onChange={handleStatusChange}
             />
             <label className="edit-inventory__body" htmlFor="status">
@@ -206,8 +204,8 @@ function EditInventory() {
               type="radio"
               id="status"
               name="status"
-              value="instock"
-              checked={stockStatus === "outOfStock"}
+              value="Out of Stock"
+              checked={stockStatus === "Out of Stock"}
               onChange={handleStatusChange}
             />
             <label
@@ -217,14 +215,34 @@ function EditInventory() {
               Out of Stock
             </label>
 
+            {stockStatus === "In Stock" && (
+              <div>
+                <p
+                  className="edit-inventory__label edit-inventory__label--padding"
+                  htmlFor="quantity"
+                >
+                  Quantity
+                </p>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity"
+                  value={inventoryData.quantity}
+                  className="edit-inventory__input"
+                  placeholder="1"
+                  onChange={handleChange}
+                />
+              </div>
+            )}
+
             <p
               className="edit-inventory__label edit-inventory__label--padding"
-              htmlFor="warehouseName"
+              htmlFor="warehouse_name"
             >
               Warehouse
             </p>
             <select
-              className="new-inventory__input edit-inventory__input--custom-select"
+              className="edit-inventory__input edit-inventory__input--custom-select"
               id="warehouse_name"
               name="warehouse_name"
               value={inventoryData.warehouse_name}
@@ -237,17 +255,17 @@ function EditInventory() {
                 </option>
               ))}
             </select>
-          </section>
-        </div>
+          </div>
+        </section>
 
-        <div className="edit-inventory__button">
+        <section className="edit-inventory__button">
           <button className="edit-inventory__button--cancel" type="cancel">
             Cancel
           </button>
           <button className="edit-inventory__button--submit" type="submit">
-            + Add Item
+            Save
           </button>
-        </div>
+        </section>
       </form>
     </section>
   );

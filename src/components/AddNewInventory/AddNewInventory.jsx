@@ -14,7 +14,7 @@ function AddNewInventory() {
     quantity: 0,
   });
 
-  const [stockStatus, setStockStatus] = useState("inStock");
+  const [stockStatus, setStockStatus] = useState("In Stock");
   const handleStatusChange = (e) => {
     setStockStatus(e.target.value);
   };
@@ -67,6 +67,7 @@ function AddNewInventory() {
     e.preventDefault();
     try {
       console.log("handlesubmit:", inventoryData);
+      inventoryData.status = stockStatus;
       const response = await axios.post(
         `http://localhost:5050/api/inventories/`,
         inventoryData
@@ -172,8 +173,8 @@ function AddNewInventory() {
               type="radio"
               id="status"
               name="status"
-              value="instock"
-              checked={stockStatus === "inStock"}
+              value="In Stock"
+              checked={stockStatus === "In Stock"}
               onChange={handleStatusChange}
             />
             <label className="new-inventory__body" htmlFor="status">
@@ -183,8 +184,8 @@ function AddNewInventory() {
               type="radio"
               id="status"
               name="status"
-              value="instock"
-              checked={stockStatus === "outOfStock"}
+              value="Out of Stock"
+              checked={stockStatus === "Out of Stock"}
               onChange={handleStatusChange}
             />
             <label
@@ -194,25 +195,32 @@ function AddNewInventory() {
               Out of Stock
             </label>
 
+            {stockStatus === "In Stock" && (
+              <div>
+                <p
+                  className="new-inventory__label new-inventory__label--padding"
+                  htmlFor="quantity"
+                >
+                  Quantity
+                </p>
+                <input
+                  type="text"
+                  name="quantity"
+                  id="quantity"
+                  value={inventoryData.quantity}
+                  className="new-inventory__input"
+                  placeholder="0"
+                  onChange={handleChange}
+                />
+              </div>
+            )}
+
             <p
               className="new-inventory__label new-inventory__label--padding"
-              htmlFor="quantity"
+              htmlFor="warehouse_name"
             >
-              Quantity
-            </p>
-            <input
-              type="text"
-              name="quantity"
-              id="quantity"
-              value={inventoryData.quantity}
-              className="new-inventory__input"
-              placeholder="0"
-              onChange={handleChange}
-            />
-
-            <label className="new-inventory__label" htmlFor="warehouse_name">
               Warehouse
-            </label>
+            </p>
             <select
               className="new-inventory__input new-inventory__input--custom-select"
               id="warehouse_name"
