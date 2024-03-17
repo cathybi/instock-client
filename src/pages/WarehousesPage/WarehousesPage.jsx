@@ -1,13 +1,11 @@
-import "./WarehousesPage.scss"
+import "./WarehousesPage.scss";
 
-function WarehousesPage() {
-    return(
-        <>
-        <p>testing</p>
-        </>
-
-
-    )
-}
+const WarehousesPage = () => {
+  return (
+    <>
+      <p>Warehouse Page</p>
+    </>
+  );
+};
 
 export default WarehousesPage;
