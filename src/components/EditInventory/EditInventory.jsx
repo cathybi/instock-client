@@ -6,6 +6,42 @@ import { useParams } from "react-router-dom";
 import "./EditInventory.scss";
 
 function EditInventory() {
+  const [warehouses, setWarehouses] = useState([]);
+  useEffect(() => {
+    async function fetchWarehouses() {
+      try {
+        const response = await axios.get(
+          "http://localhost:5050/api/warehouses"
+        );
+        setWarehouses(response.data);
+      } catch (error) {
+        console.error("Error fetching warehouses:", error);
+      }
+    }
+
+    fetchWarehouses();
+  }, []);
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await axios.get(
+          `http://localhost:5050/api/inventories`
+        );
+        const categoriesData = response.data.map(
+          (inventory) => inventory.category
+        );
+        const uniqueCategories = Array.from(new Set(categoriesData)); // Ensure unique categories
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
+  // *********************************************************************
   const [inventoryData, setInventoryData] = useState({
     id: "",
     warehouse_name: "",
@@ -122,27 +158,34 @@ function EditInventory() {
             <label className="edit-inventory__label" htmlFor="description">
               Description
             </label>
-            <input
+            <textarea
               type="text"
               name="description"
               id="description"
               value={inventoryData.description}
-              className="edit-inventory__input edit-inventory__input--height"
+              className="edit-inventory__input edit-inventory__input--wrapper"
               placeholder="This 50'', 4K LED TV provides a crystal-clear picture and vivid colors."
               onChange={handleChange}
             />
             <label className="edit-inventory__label" htmlFor="category">
               Category
             </label>
-            <input
-              type="text"
-              name="Category"
+            <select
               id="category"
+              name="category"
               value={inventoryData.category}
-              className="edit-inventory__input"
-              placeholder="Electronics"
+              className="edit-inventory__input edit-inventory__input--custom-select"
               onChange={handleChange}
-            />
+            >
+              <option value="" className="edit-inventory__select">
+                Please Select
+              </option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </section>
 
           <section className="edit-inventory__details--availablity">
@@ -180,15 +223,20 @@ function EditInventory() {
             >
               Warehouse
             </p>
-            <input
-              type="text"
-              id="warehouseName"
-              name="warehouseName"
+            <select
+              className="new-inventory__input edit-inventory__input--custom-select"
+              id="warehouse_name"
+              name="warehouse_name"
               value={inventoryData.warehouse_name}
-              className="edit-inventory__input"
-              placeholder="Manhattan"
               onChange={handleChange}
-            />
+            >
+              <option value="">Please Select</option>
+              {warehouses.map((warehouse) => (
+                <option key={warehouse.id} value={warehouse.warehouse_name}>
+                  {warehouse.warehouse_name}
+                </option>
+              ))}
+            </select>
           </section>
         </div>
 

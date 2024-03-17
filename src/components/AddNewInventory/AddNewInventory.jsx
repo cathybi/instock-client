@@ -6,13 +6,12 @@ import "./AddNewInventory.scss";
 
 function AddNewInventory() {
   const [inventoryData, setInventoryData] = useState({
-    id: "",
     warehouse_name: "",
     item_name: "",
     description: "",
     category: "",
     status: "",
-    quantity: "",
+    quantity: 0,
   });
 
   const [stockStatus, setStockStatus] = useState("inStock");
@@ -74,7 +73,6 @@ function AddNewInventory() {
       );
       console.log("Request to BackEnd:", response);
       const {
-        id,
         warehouse_name,
         item_name,
         description,
@@ -82,15 +80,17 @@ function AddNewInventory() {
         status,
         quantity,
       } = response.data;
+
+      console.log(response.data.quantity);
+
       alert("Item updated successfully");
       setInventoryData({
-        id: id,
         warehouse_name: warehouse_name,
         item_name: item_name,
         description: description,
         category: category,
         status: status,
-        quantity: quantity,
+        quantity: Number(quantity),
       });
     } catch (error) {
       console.error("Error updating inventory: ", error);
@@ -151,10 +151,10 @@ function AddNewInventory() {
               id="category"
               name="category"
               value={inventoryData.category}
-              className="new-inventory__input"
+              className="new-inventory__input new-inventory__input--custom-select"
               onChange={handleChange}
             >
-              <option value="" className="new-inventory__select">
+              <option value="" className="new-inventory__select ">
                 Please Select
               </option>
               {categories.map((category, index) => (
@@ -210,19 +210,17 @@ function AddNewInventory() {
               onChange={handleChange}
             />
 
-            <label className="new-inventory__label" htmlFor="warehouseName">
+            <label className="new-inventory__label" htmlFor="warehouse_name">
               Warehouse
             </label>
             <select
-              className="new-inventory__input"
-              id="warehouseName"
-              name="warehouseName"
-              value={inventoryData.warehouseName}
+              className="new-inventory__input new-inventory__input--custom-select"
+              id="warehouse_name"
+              name="warehouse_name"
+              value={inventoryData.warehouse_name}
               onChange={handleChange}
             >
-              <option value="" className="new-inventory__input">
-                Please Select
-              </option>
+              <option value="">Please Select</option>
               {warehouses.map((warehouse) => (
                 <option key={warehouse.id} value={warehouse.warehouse_name}>
                   {warehouse.warehouse_name}

@@ -93,9 +93,12 @@
       @include set-desktop-tablet-font("LabelFont");
       padding-left: 1rem;
     }
-  }
-  &__input::placeholder {
-    white-space: pre-wrap;
+    &--custom-select {
+      appearance: none;
+      background-image: url("./../../assets/icons/arrow_drop_down-24px.svg");
+      background-position: right center;
+      background-repeat: no-repeat;
+    }
   }
   &__label {
     @include set-mobile-font("LabelFont");
@@ -111,7 +114,7 @@
   &__body {
     padding-right: 3rem;
     &--grey {
-      color: $secondary-cloud;
+      color: $secondary-slate;
     }
     &--padding {
       padding-left: 1rem;

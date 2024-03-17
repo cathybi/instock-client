@@ -93,11 +93,19 @@
       @include set-desktop-tablet-font("LabelFont");
       padding-left: 1rem;
     }
-    &--height {
+    &--wrapper {
+      white-space: pre-wrap;
+      padding-top: 1rem;
       height: 8rem;
       @include tablet {
         height: 5rem;
       }
+    }
+    &--custom-select {
+      appearance: none;
+      background-image: url("./../../assets/icons/arrow_drop_down-24px.svg");
+      background-position: right center;
+      background-repeat: no-repeat;
     }
   }
   &__input::placeholder {
