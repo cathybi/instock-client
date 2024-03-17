@@ -1,8 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./AddNewInventory.scss";
 
 function AddNewInventory() {
@@ -13,14 +12,49 @@ function AddNewInventory() {
     description: "",
     category: "",
     status: "",
-    quantity: 0,
+    quantity: "",
   });
 
   const [stockStatus, setStockStatus] = useState("inStock");
-
   const handleStatusChange = (e) => {
     setStockStatus(e.target.value);
   };
+
+  const [warehouses, setWarehouses] = useState([]);
+  useEffect(() => {
+    async function fetchWarehouses() {
+      try {
+        const response = await axios.get(
+          "http://localhost:5050/api/warehouses"
+        );
+        setWarehouses(response.data);
+      } catch (error) {
+        console.error("Error fetching warehouses:", error);
+      }
+    }
+
+    fetchWarehouses();
+  }, []);
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await axios.get(
+          `http://localhost:5050/api/inventories`
+        );
+        const categoriesData = response.data.map(
+          (inventory) => inventory.category
+        );
+        const uniqueCategories = Array.from(new Set(categoriesData)); // Ensure unique categories
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -113,15 +147,22 @@ function AddNewInventory() {
             <label className="new-inventory__label" htmlFor="category">
               Category
             </label>
-            <input
-              type="text"
-              name="Category"
+            <select
               id="category"
+              name="category"
               value={inventoryData.category}
               className="new-inventory__input"
-              placeholder="Please select"
               onChange={handleChange}
-            />
+            >
+              <option value="" className="new-inventory__select">
+                Please Select
+              </option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </section>
 
           <section className="new-inventory__details--availablity">
@@ -172,15 +213,22 @@ function AddNewInventory() {
             <label className="new-inventory__label" htmlFor="warehouseName">
               Warehouse
             </label>
-            <input
-              type="text"
+            <select
+              className="new-inventory__input"
               id="warehouseName"
               name="warehouseName"
-              value={inventoryData.warehouse_name}
-              className="new-inventory__input"
-              placeholder="Please Select"
+              value={inventoryData.warehouseName}
               onChange={handleChange}
-            />
+            >
+              <option value="" className="new-inventory__input">
+                Please Select
+              </option>
+              {warehouses.map((warehouse) => (
+                <option key={warehouse.id} value={warehouse.warehouse_name}>
+                  {warehouse.warehouse_name}
+                </option>
+              ))}
+            </select>
           </section>
         </div>
 

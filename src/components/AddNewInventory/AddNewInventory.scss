@@ -111,11 +111,15 @@
   &__body {
     padding-right: 3rem;
     &--grey {
-      color: $secondary-slate;
+      color: $secondary-cloud;
     }
     &--padding {
       padding-left: 1rem;
     }
+  }
+
+  &__select {
+    color: red;
   }
   &__button {
     display: flex;
