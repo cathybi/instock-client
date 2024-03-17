@@ -9,8 +9,6 @@
     margin: 0;
 }
 .addWarehouse {
-    padding: 2.5rem;
-    margin: 1.5rem;
     position: relative;
     top: -6.5rem;
     background-color: white;
@@ -19,20 +17,34 @@
         margin:6rem;
         top: -9.5rem;
     }
+    &__arrowBack {
+        width: 1.5rem;
+        margin-left: 2rem;
+    }
     &__title {
         @include set-mobile-font("PageHeader");
-        margin-bottom: 2rem;
         padding: 2rem;
-        border-bottom: 1px solid $secondary-cloud;
         @include tablet {
             @include set-desktop-tablet-font("PageHeader")
         }
     }
-    &__title--part {
+    &__hr {
+        color: #BDC5D5;
+    }
+    &__hr2 {
+        color: #BDC5D5;
+        margin: 2rem 0;
+    }
+    &__title--section {
         display: flex;
         align-items: baseline;
+        margin: 0 1.5rem;
+        box-shadow: 0 2px 5px rgba(1, 1, 1, 0.1);
     }
     &__text {
+        margin: 0 1.5rem;
+        padding: 2rem;
+        box-shadow: 0 2px 5px rgba(1, 1, 1, 0.1);
         @include tablet {
             display: flex;
             justify-content: center;
@@ -49,14 +61,12 @@
     }
     &__details--warehouse {
         @include tablet {
-            border-right: 1px solid $secondary-cloud;
             padding: 2rem;
             width: 50%;
         }
     }
     &__details--contact {
         @include tablet {
-            border-left: 1px solid $secondary-cloud;
             padding: 2rem;
             width: 50%;
         }
@@ -82,13 +92,12 @@
     }
     &__footer {
         width: 100%;
-        background-color:#F7F8F9;
-        margin-left: -5rem;
-        left: 5rem;
+        background-color:rgba(247, 248, 249, 0.5);
         position: absolute;
-        height: 5rem;
+        height: 4.25rem;
         align-items: center;
         display: grid;
+        box-shadow: 0 2px 5px rgba(1,1,1,0.1);
     }
     &__button {
         display: flex;
@@ -108,13 +117,13 @@
     }
     &__button--cancel {
         @include set-button-style("Mobile", $primary-white);
+        margin-right: 1rem;
         border-style: solid;
         color: $secondary-cloud;
         width: 40%;
         @include tablet {
             @include set-button-style("TabletDesktop", $primary-instock-indigo);
             width: 9rem;
-            margin-right: 1rem;
         }
     }
 }

@@ -33,10 +33,11 @@ function AddWarehouse (){
 
     return (
         <section className="addWarehouse">
-            <div className="EditWarehouse__title--part">
-                <Link to={WarehousesPage}><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+            <div className="EditWarehouse__title--section">
+                <Link to="/"><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
                 <h1 className="EditWarehouse__title">Add New Warehouse</h1>
             </div>
+            <hr className="addWarehouse__hr" />
             <form onSubmit={handleFormSubmit} className="addWarehouse__form" name="addWarehouse__form">
                 <div className="addWarehouse__text">
                     <section className="addWarehouse__details--warehouse">
@@ -50,7 +51,7 @@ function AddWarehouse (){
                         <p className="addWarehouse__label">Country</p>
                         <input type="text" name="Country" className="addWarehouse__input" placeholder="Country"/>
                     </section>
-
+                    <hr className="addWarehouse__hr2" />
                     <section className="addWarehouse__details--contact">
                         <h2 className="addWarehouse__subtitle">Contact Details</h2>
                         <p className="addWarehouse__label">Contact Name</p>

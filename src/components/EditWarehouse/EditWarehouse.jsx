@@ -52,10 +52,11 @@ function EditWarehouse (){
 
     return (
         <section className="EditWarehouse">
-            <div className="EditWarehouse__title--part">
-                <Link to={WarehousesPage}><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+            <div className="EditWarehouse__title--section">
+                <Link to="/"><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
                 <h1 className="EditWarehouse__title">Edit Warehouse</h1>
             </div>
+            <hr className="EditWarehouse__hr" />
             <form onSubmit={handleFormSubmit} className="EditWarehouse__form" id="EditWarehouse__form" name="EditWarehouse__form">
                 <div className="EditWarehouse__text">
                     <section className="EditWarehouse__details--warehouse">
@@ -69,7 +70,7 @@ function EditWarehouse (){
                         <p className="EditWarehouse__label">Country</p>
                         <input type="text" name="Country" className="EditWarehouse__input" />
                     </section>
-
+                    <hr className="EditWarehouse__hr2" />
                     <section className="EditWarehouse__details--contact">
                         <h2 className="EditWarehouse__subtitle">Contact Details</h2>
                         <p className="EditWarehouse__label">Contact Name</p>
