@@ -2,7 +2,8 @@ import "./WarehousesList.scss";
 import { useState, useEffect } from "react";
 import deleteIcon from "./../../assets/icons/delete_outline-24px.svg";
 import editIcon from "./../../assets/icons/edit-24px.svg";
-import rightIcon from "./../../assets/icons/chevron_right-24px.svg"
+import rightIcon from "./../../assets/icons/chevron_right-24px.svg";
+import sortIcon from "./../../assets/icons/sort-24px.svg";
 import { InStockApi } from "../../utils/Util.js";
 
 /**
@@ -36,8 +37,7 @@ const WarehousesList = () => {
    * @param {*} event 
    */
   function handleDelete(event) {
-    event.preventDefault();
-    console.log("Delete clicked.");
+    event.preventDefault();  
   }
 
   /**
@@ -46,7 +46,6 @@ const WarehousesList = () => {
    */
   function handleEdit(event) {
     event.preventDefault();
-    console.log("Edit clicked.");
   }
 
   /**
@@ -54,8 +53,7 @@ const WarehousesList = () => {
    * @param {*} event 
    */
   function handleSearch(event) {
-    event.preventDefault();
-    console.log("Search textfeild clicked.");
+    event.preventDefault();   
   }
 
   /**
@@ -71,11 +69,35 @@ const WarehousesList = () => {
     <div className="warehouse-list">
       <form className="warehouse-list__form">
         <div className="warehouse-list__title">Warehouses </div>
-        <input type="text" id="search" name="search" onKeyUp={handleSearch} placeholder="Search..." className="warehouse-list__search"></input>
+        <input type="text" id="search" name="search" onClick={handleSearch} placeholder="Search..." className="warehouse-list__search"></input>
         <button className="warehouse-list__button" onClick={handleAddNewItem}>+ Add New Warehouse</button>
       </form>
 
       <ul className="warehouse-list__list">
+        <li className="warehouse-list__table-headings">
+
+          <div className="warehouse-list__column-warehouse">
+            <div>WAREHOUSE</div>
+            <img className="warehouse-list__sort-icon" alt="SortIcon" src={sortIcon} />
+          </div>
+
+          <div className="warehouse-list__column-address">
+            <div>ADDRESS</div>
+            <img className="warehouse-list__sort-icon" alt="SortIcon" src={sortIcon} />
+          </div>
+
+          <div className="warehouse-list__column-name">
+            <div>CONTACT NAME</div>
+            <img className="warehouse-list__sort-icon" alt="SortIcon" src={sortIcon} />
+          </div>
+
+          <div className="warehouse-list__column-information">
+            <div>CONTACT INFORMATION</div>
+            <img className="warehouse-list__sort-icon" alt="SortIcon" src={sortIcon} />
+          </div>
+
+          <div className="warehouse-list__column-actions">ACTIONS</div>
+        </li>
         {
           warehouseList && warehouseList.map((warehouse) => (
 
@@ -86,6 +108,17 @@ const WarehousesList = () => {
                   <div>{warehouse.warehouse_name}</div>
                   <img className="warehouse-list__right-image" alt="RightIcon" src={rightIcon} />
                 </div>
+              </div>
+
+              <div className="warehouse-list__address-tablet">
+                <div className="warehouse-list__label">ADDRESS</div>
+                <div>{warehouse.address}</div>
+                <div>{warehouse.city}</div>
+              </div>
+
+              <div className="warehouse-list__name-tablet">
+                <div className="warehouse-list__label">CONTACT NAME</div>
+                <div>{warehouse.contact_name}</div>
               </div>
 
               <div className="warehouse-list__name">
@@ -106,10 +139,10 @@ const WarehousesList = () => {
               </div>
 
               <div className="warehouse-list__actions">
-                <img className="warehouse-list__actions-row"
+                <img className="warehouse-list__actions-image"
                   src={deleteIcon} alt="DeleteIcon" onClick={handleDelete} />
 
-                <img className="warehouse-list__actions-row"
+                <img className="warehouse-list__actions-image"
                   src={editIcon} alt="EditIcon" onClick={handleEdit} />
               </div>
 

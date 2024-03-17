@@ -6,15 +6,6 @@ import React, { useState, useEffect } from "react";
 import { InStockApi } from "../../utils/Util";
 import { useParams } from "react-router-dom";
 
-<<<<<<< HEAD
-const SelectedInventory = () => {
-    return (
-        <></>
-    );
-}
-
-export default SelectedInventory;
-=======
 function AddEditInventory() {
   const [inventoryItem, setInventoryItem] = useState({});
   const { inventoryId } = useParams();
@@ -95,4 +86,3 @@ function AddEditInventory() {
 }
 
 export default AddEditInventory;
->>>>>>> development
