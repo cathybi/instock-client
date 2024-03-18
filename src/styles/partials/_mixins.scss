@@ -29,13 +29,10 @@
    Added common Mixins for styling textbox
 -----------------------------------------------------------*/
 @mixin set-form-inputfeild-style($screenType) {
-    border: 1px solid $secondary-cloud;
+    border: 1.5px solid $secondary-cloud;
     border-radius: 1.25rem;
-    color: $secondary-slate;
-    background-image: url($search-icon-url);
-    background-repeat: no-repeat;
-    padding: 1rem;
-    background-position: calc(100% - 1rem) center;
+    color: $secondary-slate;    
+    padding: 1rem;   
     height: 2.375rem;
 
     @if($screenType == "Mobile") {
@@ -55,6 +52,9 @@
     }
     &:focus {
         outline-color: $primary-instock-indigo;
+    }
+    &--error {
+        border: 1.5px solid $red;
     }
 }
 
@@ -92,7 +92,6 @@
 @mixin set-icon-style($url) {
     background-image: url($url);
     background-repeat: no-repeat;
-    background-position: left;
-    background-size: 1.2rem;   
-    background-position-x: 0.5rem;
+    background-position: calc(100% - 1rem) center;
+    background-size: 1.5rem;  
 }
