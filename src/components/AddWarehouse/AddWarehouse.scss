@@ -8,11 +8,11 @@
     padding: 0;
     margin: 0;
 }
-.EditWarehouse {
+.addWarehouse {
     margin: 0 1rem;
-    background-color: white;
-    top: -4.5rem;
     position: relative;
+    top: -4.5rem;
+    background-color: white;
     box-shadow: 0 2px 5px rgba(1,1,1,0.1);
     @include desktop {
         margin:6rem;
@@ -106,7 +106,7 @@
             right: 6rem;
         }
     }
-    &__button--save {
+    &__button--submit {
         @include set-button-style("Mobile", $primary-instock-indigo);
         width: 40%;
         @include tablet {

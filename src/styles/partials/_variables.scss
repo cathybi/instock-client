@@ -1,0 +1,32 @@
+/*Tablet, Desktop breakpoint varibles*/
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+/* Primary Colors */
+$primary-instock-black: #13182c;
+$primary-instock-indigo: #2e66e5;
+$primary-white: #ffffff;
+
+/* Secondary Colors */
+$secondary-slate: #5c667e;
+$secondary-cloud: #bdc5d5;
+
+/*Background colors*/
+$background-graphite: #232940;
+$background-light-grey: #f7f8f9;
+$background-light-blue: #2E66E512;
+
+/*Supporting Colors*/
+$green: #158463;
+$red: #c94515;
+
+/*Margin and spacing varibles for all breakpoints*/
+$m-margin: 1rem;
+$t-margin: 2rem;
+$d-margin: 8rem;
+$m-spacing-between : 1.5rem;
+
+/*Icons Path */
+$plus-icon-url: ""; //we need to add plus svg
+$search-icon-url: "../../assets/icons/search-24px.svg"; //check path while testing
+$edit-icon-url: "./../src/assets/icons/edit-24px.svg"; //check path

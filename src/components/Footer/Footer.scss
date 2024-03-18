@@ -1,0 +1,35 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+
+.footer {
+  padding: 2rem 0;
+  width: 100%;
+  text-align: center;
+  color: $secondary-slate;
+  background-color: $background-light-grey;
+  @include set-mobile-font("BodySmallFont");
+
+  @include tablet {
+    @include set-desktop-tablet-font("BodySmallFont");
+    padding-top: 3.5rem;
+  }
+
+  @include desktop {
+    padding-top: 5.5rem;
+  }
+
+  &__text {
+    @include tablet {
+      position: relative;
+      top: 0.7rem;
+    }
+
+    @include desktop {
+      top: 0;
+    }
+  }
+
+}

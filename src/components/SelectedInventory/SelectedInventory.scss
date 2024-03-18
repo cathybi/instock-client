@@ -1,0 +1,180 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+@use '../../styles/partials/mixins-desktop-tablet' as *;
+@use '../../styles/partials/mixins-mobile' as *;
+
+
+.inventory-detail {
+  background-color: $primary-white;
+  border: 1px solid $primary-white;
+  margin: -4.3rem 1rem 0 1rem;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+      margin: -5.7rem 2rem 0 2rem;
+  }
+
+  @include desktop {
+      margin: -5.7rem 8rem 0 8rem;
+  }
+}
+
+.inventory-item {
+  &__nav {
+    border-bottom: 1px solid $secondary-cloud;
+    padding: 2rem 2rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+    @include tablet {
+      gap: 10px;
+    }
+  }
+
+  &__back {
+    display: flex;
+  }
+
+  &__edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background-color: #2E66E6;
+    margin-right: 2rem;
+
+    @include tablet {
+      width: 81px;
+      height: 38px;
+      border-radius: 20px;
+      padding: 8px, 16px;
+    }
+  }
+
+  &__editIcon {
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  &__edit-label {
+    display: none;
+    color: white;
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__title {
+    padding-left: 1rem;
+  }
+}
+
+.inventory-description {
+  padding: 2rem 2rem 1rem 2rem;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  &__hr {
+    display: none;
+    color: $secondary-cloud;
+
+    @include tablet {
+      // flex: 1;
+      display: block;
+    }
+  }
+
+  &__box-one {
+    @include tablet {
+      flex: 2;
+    }
+  }
+
+  &__box-two {
+    padding-right: 5%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20rem;
+  
+    @include tablet {
+      flex: 2;
+      gap: 0;
+      justify-content: space-around;
+    }
+  }
+
+  &__information {
+    @include set-mobile-font("LabelFont");
+    margin-top: 1px;
+
+    @include tablet {
+      width: 70%;
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__heading {
+    @include set-mobile-font("LabelFont");
+    margin-bottom: 0;
+    color: $secondary-slate;
+    font-weight: 600;
+  }
+}
+
+.status {
+  padding-bottom: 0.1rem;
+  color: $secondary-slate;
+  font-weight: 600;
+
+  &.in-stock {
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 4.5rem;
+    text-align: center;
+    color: $green;
+    background: #15846312;
+    padding: 0.1rem 0.5rem;
+    border-radius: 1.25rem;
+
+    @include tablet {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &.out-of-stock {
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 5.5rem;
+    text-align: center;
+    color: $red;
+    background: #C9451512;
+    padding: 0.1rem 0.1rem;
+    border-radius: 1.25rem;
+  }
+}
+
+.description {
+  padding: 0 0 1rem 0;
+}
+
+.item {
+  padding: 0 0 1rem 0;
+}
+
+.status {
+  padding: 0 0 1rem 0;
+}

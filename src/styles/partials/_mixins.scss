@@ -1,0 +1,97 @@
+@use './variables' as *;
+
+/*------------------------------------------------------- 
+   Added Mixins and media Queries for Tablet and 
+    Desktop breakpoints 
+  -------------------------------------------------------*/
+@mixin tablet {
+    @media screen and (min-width:$tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width:$desktop-breakpoint) {
+        @content;
+    }
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for Setting Fonts of BrainFlix
+-----------------------------------------------------------*/
+@mixin set-font ($fontSize, $lineHeight, $fontWeight) {
+    font-size: $fontSize;
+    line-height: $lineHeight ;
+    font-weight: $fontWeight;
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for styling textbox
+-----------------------------------------------------------*/
+@mixin set-form-inputfeild-style($screenType) {
+    border: 1.5px solid $secondary-cloud;
+    border-radius: 1.25rem;
+    color: $secondary-slate;    
+    padding: 1rem;   
+    height: 2.375rem;
+
+    @if($screenType == "Mobile") {
+        width: 100%;
+    }
+
+    @if($screenType == "Tablet") {
+        width: 12rem;
+    }
+
+    @if($screenType == "Desktop") {
+        width: 17.125rem;
+    }
+    &::placeholder {
+        color: $secondary-slate;
+        font-size: small;
+    }
+    &:focus {
+        outline-color: $primary-instock-indigo;
+    }
+    &--error {
+        border: 1.5px solid $red;
+    }
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for Setting styling Button for site
+-----------------------------------------------------------*/
+@mixin set-button-style($screenType, $bgcolor) {
+    padding: 1rem;
+    border-radius: 1.25rem;
+    background-color: $bgcolor;
+    border-style: none;
+    color: $primary-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.375rem;
+
+    @if($screenType =="Mobile") {
+        width: 100%;
+    }
+
+    @if($screenType =="Tablet") {
+        width: 8rem;
+    }
+
+    @if($screenType =="Desktop") {
+        width: 8rem;
+    }
+}
+
+/*-----------------------------------------------------------
+   Added common Mixins for Setting styling for Icons appear 
+   on button of site 
+-----------------------------------------------------------*/
+@mixin set-icon-style($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) center;
+    background-size: 1.5rem;  
+}

@@ -1,0 +1,336 @@
+@use "./../../styles/partials/variables" as *;
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+
+.warehouse-list {
+    margin: -4.3rem 1rem 0 1rem;
+    background-color: $primary-white;
+    border: 1px solid $primary-white;
+    border-radius: 4px;
+    position: relative;
+
+    @include tablet {
+        margin: -5.5rem 2rem 0 2rem;
+    }
+
+    @include desktop {
+        margin: -6.1rem 8rem 0 8rem;
+    }
+
+    &__form {
+        padding: 2rem 2rem 1rem 2rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        @include desktop {
+            margin: 0;
+            margin-bottom: 0.6rem;
+        }
+    }
+
+    &__title {
+        @include set-mobile-font("PageHeader");
+        margin: 0 0 1rem 0;
+        width: 7.2rem;
+        height: 2.25rem;
+
+        @include tablet {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            width: 8.2rem;
+            height: 2.5rem;
+        }
+    }
+    &__header-right {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: end;
+            align-items: center;
+            gap: 2rem;
+        }
+    }
+
+    &__search {
+        @include set-form-inputfeild-style("Mobile");
+        @include set-icon-style($search-icon-url);
+
+        @include tablet {
+            @include set-form-inputfeild-style("Tablet");
+            width: 11.5rem;
+        }
+
+        @include desktop {
+            @include set-form-inputfeild-style("Desktop");
+        }
+    }
+
+    &__button {
+        @include set-button-style("Mobile", $primary-instock-indigo);
+
+        @include tablet {
+            @include set-button-style("Tablet", $primary-instock-indigo);
+            width: 10.5rem;
+        }
+
+        @include desktop {
+            @include set-button-style("Desktop", $primary-instock-indigo);
+            width: 10.5rem;
+        }
+    }
+
+    &__list {
+        @include set-mobile-font("BodySmallFont");
+        padding: 0;
+
+        @include tablet {
+            margin: 0;
+
+            :last-child {
+                border: none;
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 1rem;
+        border-top: 1px solid $secondary-cloud;
+        @include set-mobile-font("LabelFont");
+        padding-bottom: 1.5rem;
+
+        @include tablet {
+            @include set-desktop-tablet-font("LabelFont");
+            display: flex;
+            flex-direction: row;
+            padding: 1rem 2rem;
+            margin: 0;
+            border-top: none;
+            border-bottom: 1px solid $secondary-cloud;
+        }
+
+        &:hover {
+            background-color: $background-light-blue;            
+        }
+    }
+
+    &__warehouse-row {
+        display: flex;
+        gap: 0.3rem;
+    }
+
+    &__right-image {
+        width: 1.3rem;
+        transition: transform 0.3s ease;
+    }
+
+    &__warehouse-row:hover &__right-image {
+        transform: translateX(4px);
+    }
+
+    &__actions-image {
+        width: 1.5rem;
+    }
+
+    &__sort-icon {
+        width: 1rem;
+    }
+
+    &__warehouse {
+        width: 45%;
+        margin-left: $m-margin;
+        margin-top: $m-margin;
+        color: $primary-instock-indigo;
+        font-weight: 600;
+
+        @include tablet {
+            width: 20%;
+            margin: 0;
+            align-self: center;
+        }
+
+        @include desktop {
+            width: 25%;
+        }
+    }
+
+    &__name {
+        width: 45%;
+        margin-top: $m-margin;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__address {
+        width: 45%;
+        margin-left: $m-margin;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__address-tablet {
+        display: none;
+
+        @include tablet {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+        }
+
+        @include desktop {
+            width: 25%;
+            flex-direction: row;
+        }
+    }
+
+    &__name-tablet {
+        display: none;
+
+        @include tablet {
+            width: 20%;
+            display: flex;
+            align-self: center;
+        }
+
+        @include desktop {
+            width: 20%;
+        }
+    }
+
+    &__contact-info {
+        width: 45%;
+
+        @include tablet {
+            width: 30%;
+            align-self: center;
+        }
+
+        @include desktop {
+            width: 25%;
+        }
+    }
+
+    &__actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 $m-margin;
+
+        @include tablet {
+            width: 8%;
+            gap: 1rem;
+            margin: 0;
+            align-self: center;
+        }
+
+        @include desktop {
+            width: 5%;
+        }
+    }
+
+    &__actions-row {
+        margin: 0 $m-margin;
+    }
+
+    &__label {
+        @include set-mobile-font("TableHeader");
+        color: $secondary-slate;
+        font-weight: 600;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__table-headings {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            background-color: $background-light-grey;
+            color: $secondary-slate;
+            @include set-desktop-tablet-font("TableHeader");
+            font-weight: 600;
+            padding: 0.5rem 2rem;
+        }
+
+        @include desktop {
+            padding: 0.8rem 2rem;
+            // margin-left: 0.8rem;
+        }
+    }
+
+    //Table Heading styling for tablet and desktop views
+    &__column-warehouse {
+        display: flex;
+        width: 20%;
+        gap: 0.3rem;
+
+        @include desktop {
+            width: 25%;
+        }
+    }
+
+    &__column-address {
+        display: flex;
+        width: 20%;
+        gap: 0.3rem;
+
+        @include desktop {
+            width: 25%;
+        }
+    }
+
+    &__column-name {
+        display: flex;
+        width: 20%;
+        gap: 0.3rem;
+
+        @include desktop {
+            width: 20%;
+        }
+    }
+
+    &__column-information {
+        display: flex;
+        width: 30%;
+        gap: 0.3rem;
+
+        @include desktop {
+            width: 25%;
+        }
+    }
+
+    &__column-actions {
+        display: flex;
+        width: 8%;
+        gap: 0.3rem;
+
+        @include desktop {
+            width: 5%;
+        }
+    }
+}
