@@ -1,7 +1,7 @@
 import "./InventoryList.scss"
 import React, { useRef } from 'react';
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
@@ -28,19 +28,14 @@ function InventoryList({ inventoryList, displayWarehouse, initInventoryList}) {
         console.log("handleAddItem button been clicked ");
     } 
 
-    function closeModal() {     
+    function closeModal() {
         setShowDeleteModal(false);
-        initInventoryList ();  
+        initInventoryList ();
     } 
 
     function handleDelete(inventoryObject) {
         setShowDeleteModal(true);
-        setInventoryToDelete(inventoryObject);        
-    }
-
-    function handleEdit(event) {
-        event.preventDefault();
-        console.log("Edit button click event");
+        setInventoryToDelete(inventoryObject);
     }
 
     return (
@@ -94,9 +89,9 @@ function InventoryList({ inventoryList, displayWarehouse, initInventoryList}) {
                     inventoryList &&
                     inventoryList
                         .map((inventory, index) => (
-                            <>
+                            <div key={inventory.id}>
                                 {index !== 0 && <hr className="inventory__line" />}
-                                <li key={inventory.id} className="inventory__li">
+                                <li  className="inventory__li">
                                     <div className="inventory__sectionwraper">
                                         <div className="inventory__section--left">
                                             <div className="inventory__column">
@@ -137,11 +132,12 @@ function InventoryList({ inventoryList, displayWarehouse, initInventoryList}) {
                                     <div className="inventory__actions">
                                         <img src={deleteIcon} alt="delete icon" 
                                          onClick={() => handleDelete({id:inventory.id, name:inventory.item_name})}  />
-                                        
-                                        <img src={editIcon} alt="edit icon" onClick={handleEdit} />
+                                        <Link to={`/inventory/${inventory.id}/edit/`}>
+                                            <img src={editIcon} alt="edit icon" />
+                                        </Link>
                                     </div>
                                 </li >
-                            </>
+                            </div>
                         ))
                 }
             </ul>

@@ -1,7 +1,7 @@
 import "./SelectedInventory.scss";
 import { Link } from "react-router-dom";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
-import editIcon from "../../assets/icons/edit-24px.svg";
+import editIcon from "../../assets/icons/edit_white-24px.svg";
 import React, { useState, useEffect } from "react";
 import { InStockApi } from "../../utils/Util";
 import { useParams } from "react-router-dom";
@@ -38,43 +38,46 @@ function AddEditInventory() {
             <Link
               className="inventory-item__link" to={`/inventory/${inventoryItem.id}/edit`}>
               <img src={editIcon} alt="edit icon" className="inventory-item__editIcon" />
+              <div className="inventory-item__edit-label">Edit</div>
             </Link>
           </div>
         </div>
         <div className="inventory-description">
-          <div className="box-one">
+          <div className="inventory-description__box-one">
 
             <div className="description">
-              <h4 className="heading">ITEM DESCRIPTION:</h4>
-              <p className="description__information">{inventoryItem.description}</p>
+              <h4 className="inventory-description__heading">ITEM DESCRIPTION:</h4>
+              <p className="inventory-description__information">{inventoryItem.description}</p>
             </div>
 
             <div className="item">
-              <h4 className="heading">CATEGORY:</h4>
-              <p className="item__information">{inventoryItem.category}</p>
+              <h4 className="inventory-description__heading">CATEGORY:</h4>
+              <p className="inventory-description__information">{inventoryItem.category}</p>
             </div>
           </div>
 
-          <div className="box-two">
+          <hr className="inventory-description__hr"/>
+
+          <div className="inventory-description__box-two">
 
             <div className="box-status">
               <div className="status">
-                <h4 className="heading">STATUS:</h4>
+                <h4 className="inventory-description__heading">STATUS:</h4>
                 <div className={`status ${inventoryItem.status === "In Stock" ? "in-stock" : "out-of-stock"}`}>
-                  {inventoryItem.status}
+                  {inventoryItem?.status?.toUpperCase()}
                 </div>
               </div>
 
               <div className="warehouse">
-                <h4 className="heading">WAREHOUSE:</h4>
-                <p className="warehouse__information">{inventoryItem.warehouse_name}</p>
+                <h4 className="inventory-description__heading">WAREHOUSE:</h4>
+                <p className="inventory-description__information">{inventoryItem.warehouse_name}</p>
               </div>
             </div>
 
             <div className="box-quantity">
               <div className="quantity">
-                <h4 className="heading">QUANTITY:</h4>
-                <p className="quantity__information">{inventoryItem.quantity}</p>
+                <h4 className="inventory-description__heading">QUANTITY:</h4>
+                <p className="inventory-description__information">{inventoryItem.quantity}</p>
               </div>
             </div>
 

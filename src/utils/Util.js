@@ -34,6 +34,22 @@ export class InStockApi {
       throw new Error("Failed to get inventory list: " + error.message);
     }
   }
+  async addInventory(newInventory){
+    try {
+      const response = await this.axios.post(`/api/inventories/`,newInventory);
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to update warehouse: " + error.message);
+    }
+  }
+  async updateInventory(inventoryId, inventoryData) {
+    try {
+      const response = await this.axios.put(`/api/inventories/${inventoryId}`, inventoryData);
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to get inventory list: " + error.message);
+    }
+  }
 
   async getwarehousesList() {
     try {
