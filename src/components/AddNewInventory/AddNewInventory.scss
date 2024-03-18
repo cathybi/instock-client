@@ -88,6 +88,9 @@
     padding-left: 1rem;
     margin-bottom: 1rem;
     color: $primary-instock-black;
+    &:focus {
+      outline-color: $primary-instock-indigo;
+  }
     @include set-mobile-font("LabelFont");
     @include tablet {
       @include set-desktop-tablet-font("LabelFont");
