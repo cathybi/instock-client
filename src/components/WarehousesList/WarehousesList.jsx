@@ -4,7 +4,9 @@ import deleteIcon from "./../../assets/icons/delete_outline-24px.svg";
 import editIcon from "./../../assets/icons/edit-24px.svg";
 import rightIcon from "./../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "./../../assets/icons/sort-24px.svg";
+import closeIcon from "./../../assets/icons/close-24px.svg";
 import { InStockApi } from "../../utils/Util.js";
+import DeleteWarehouse from "./../DeleteWarehouse/DeleteWarehouse.jsx";
 
 /**
  * #J24BTW-9: Front-End: Warehouse List Component (Responsive)
@@ -12,49 +14,52 @@ import { InStockApi } from "../../utils/Util.js";
  * when you click on "warehouses" link on the header.
  * @returns 
  */
-const WarehousesList = () => {
+const WarehousesList = () => {  
   const stockApi = new InStockApi();
+
   //Added "warehouseList" state variable to show all warhouse's list
   const [warehouseList, setWarehouseList] = useState([]);
+
+  //Added state Variables for delete functionality 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [warehouseToDelete, setWarehouseToDelete] = useState({});  
+
+  async function getWarehousesList() {
+    try {
+      const response = await stockApi.getwarehousesList();
+      setWarehouseList(response);
+    } catch (error) {
+      console.log("Error in getting videos list from useEffect()->getWarehouseList() method", error);
+    }
+  }
 
   /**
    *Below useEffect() will run only once, when component mounts for the first time
    */
-  useEffect(() => {
-    async function getWarehousesList() {
-      try {
-        const response = await stockApi.getwarehousesList();
-        setWarehouseList(response);
-      } catch (error) {
-        console.log("Error in getting videos list from useEffect()->getWarehouseList() method", error);
-      }
-    }
+  useEffect(() => {   
     getWarehousesList();
-  }, []);
+  }, []);  
 
   /**
-   * when you click on Delete, handleDelete get called
+   * when you click on Delete, handleDelete get called to delete selected warehouse.
    * @param {*} event 
    */
-  function handleDelete(event) {
-    event.preventDefault();
-  }
-
-  /**
-   * When you click on edit,handleEdit get called
-   * @param {*} event 
-   */
-  function handleEdit(event) {
-    event.preventDefault();
-  }
-
-  /**
-   * When you click on add text in Serach textfeild,handleSearch get called
-   * @param {*} event 
-   */
-  function handleSearch(event) {
-    event.preventDefault();  
+  function handleDelete( warehouseObject) {     
+    setShowDeleteModal(true);
+    setWarehouseToDelete(warehouseObject);
   } 
+
+  function closeModal() {     
+    setShowDeleteModal(false);
+    getWarehousesList();     
+  } 
+
+  function handleEdit() {
+   
+  }
+ 
+  function handleSearch() {
+  }
 
   /**
    *  When you click on "Add New Item" button,handleSubmit get called
@@ -62,8 +67,7 @@ const WarehousesList = () => {
    */
   function handleSubmit(event) {
     event.preventDefault();
-    
-  } 
+  }
 
   return (
     <div className="warehouse-list">
@@ -101,7 +105,6 @@ const WarehousesList = () => {
         </li>
         {
           warehouseList && warehouseList.map((warehouse) => (
-
             <li key={warehouse.id} className="warehouse-list__item">
               <div className="warehouse-list__warehouse">
                 <div className="warehouse-list__label">WAREHOUSE</div>
@@ -141,7 +144,8 @@ const WarehousesList = () => {
 
               <div className="warehouse-list__actions">
                 <img className="warehouse-list__actions-image"
-                  src={deleteIcon} alt="DeleteIcon" onClick={handleDelete} />
+                  src={deleteIcon} alt="DeleteIcon"
+                  onClick={() => handleDelete({id:warehouse.id,name:warehouse.warehouse_name})} />
 
                 <img className="warehouse-list__actions-image"
                   src={editIcon} alt="EditIcon" onClick={handleEdit} />
@@ -150,7 +154,13 @@ const WarehousesList = () => {
             </li>
           ))
         }
-      </ul>
+      </ul>   
+
+      <DeleteWarehouse isOpen={showDeleteModal}
+        onRequestClose={closeModal}
+        warehouseToDelete={warehouseToDelete}       
+      />
+
     </div>
   );
 };

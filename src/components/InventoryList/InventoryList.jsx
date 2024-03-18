@@ -1,13 +1,19 @@
 import "./InventoryList.scss"
 import React, { useRef } from 'react';
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
+import DeleteInventory from "../DeleteInventory/DeleteInventory.jsx";
 
-function InventoryList({ inventoryList, displayWarehouse }) {
+function InventoryList({ inventoryList, displayWarehouse, initInventoryList}) {
     const searchRef = useRef();
+
+    //Added state Variables for delete functionality   
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [inventoryToDelete, setInventoryToDelete] = useState({});    
 
     function handleSearch(event) {
         event.preventDefault();
@@ -20,12 +26,18 @@ function InventoryList({ inventoryList, displayWarehouse }) {
     function handleAddItem(event) {
         event.preventDefault();
         console.log("handleAddItem button been clicked ");
+    } 
+
+    function closeModal() {     
+        setShowDeleteModal(false);
+        initInventoryList ();  
+    } 
+
+    function handleDelete(inventoryObject) {
+        setShowDeleteModal(true);
+        setInventoryToDelete(inventoryObject);        
     }
 
-    function handleDelete(event) {
-        event.preventDefault();
-        console.log("Delete button click event");
-    }
     function handleEdit(event) {
         event.preventDefault();
         console.log("Edit button click event");
@@ -123,7 +135,9 @@ function InventoryList({ inventoryList, displayWarehouse }) {
                                     </div>
 
                                     <div className="inventory__actions">
-                                        <img src={deleteIcon} alt="delete icon" onClick={handleDelete} />
+                                        <img src={deleteIcon} alt="delete icon" 
+                                         onClick={() => handleDelete({id:inventory.id, name:inventory.item_name})}  />
+                                        
                                         <img src={editIcon} alt="edit icon" onClick={handleEdit} />
                                     </div>
                                 </li >
@@ -131,6 +145,11 @@ function InventoryList({ inventoryList, displayWarehouse }) {
                         ))
                 }
             </ul>
+
+            <DeleteInventory isOpen={showDeleteModal}
+                onRequestClose={closeModal}
+                inventoryToDelete={inventoryToDelete}
+            />
 
         </div >
     );

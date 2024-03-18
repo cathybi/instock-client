@@ -20,7 +20,9 @@ function InventoryPage() {
 
     return (
         <div className="inventory-page">
-            <InventoryList inventoryList={inventoryList} displayWarehouse={true}/>
+            <InventoryList inventoryList={inventoryList} 
+                          displayWarehouse={true}
+                          initInventoryList={initInventoryList}/>
         </div>
     );
 }

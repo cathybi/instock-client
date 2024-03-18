@@ -8,6 +8,24 @@ export class InStockApi {
     });
   }
 
+  async deleteWarehouse(warehouseId) {
+    try {
+      const response = await this.axios.delete("/api/warehouses/"+warehouseId);
+      return response;
+    } catch (error) {
+      throw new Error("Failed to delete warehouse: " + error.message);
+    }
+  }
+
+  async deleteInventory(inventoryId) {
+    try {
+      const response = await this.axios.delete("/api/inventories/"+inventoryId);
+      return response;
+    } catch (error) {
+      throw new Error("Failed to delete warehouse: " + error.message);
+    }
+  }
+
   async getInventoryList() {
     try {
       const response = await this.axios.get("/api/inventories");

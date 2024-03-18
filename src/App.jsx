@@ -8,8 +8,6 @@ import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 import AddEditWarehouse from "./components/AddEditWarehouse/AddEditWarehouse";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import DeleteInventory from "./components/DeleteInventory/DeleteInventory"
-import DeleteWarehouse from "./components/DeleteWarehouse/DeleteWarehouse"
 
 function App() {
   return (
@@ -23,9 +21,7 @@ function App() {
           <Route path="/inventory/add" element={<AddEditInventory />} />
           <Route path="/warehouse/add" element={<AddEditWarehouse />} />
           <Route path="/inventory/:inventoryId" element={<InventoryDetailsPage />} />
-          <Route path="/warehouse/:warehouseId" element={<WarehousesDetailsPage />} />
-          <Route path="/inventory/deleteInventory" element={<DeleteInventory />} />
-          <Route path="/warehouse/deleteWarehouse" element={<DeleteWarehouse />} />
+          <Route path="/warehouse/:warehouseId" element={<WarehousesDetailsPage />} />                
         </Routes>
         <Footer />
       </BrowserRouter>
