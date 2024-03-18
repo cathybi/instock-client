@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { InStockApi } from "../../utils/Util";
 import { useParams } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../EditWarehouse/EditWarehouse.scss"
 import { useEffect } from "react";
-import WarehousesPage from "../../pages/WarehousesPage/WarehousesPage";
 
 function EditWarehouse (){
 
@@ -29,8 +28,17 @@ function EditWarehouse (){
         getWarehouseOrigData();
     },[warehouseId]);
 
+    function handleBack() {
+        navigate(-1);
+      }
+
     function handleFormSubmit (event){
         event.preventDefault();
+        const action = event.target.action.value;
+        if (action === "cancel" || action==="") {
+          navigate(-1);
+          return;
+        }
         const updatedWarehouse = {
             warehouse_name: event.target.WarehouseName.value,
             address: event.target.StreetAddress.value,
@@ -53,7 +61,7 @@ function EditWarehouse (){
     return (
         <section className="EditWarehouse">
             <div className="EditWarehouse__title--section">
-                <Link to="/"><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+                <img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" onClick={handleBack}/>
                 <h1 className="EditWarehouse__title">Edit Warehouse</h1>
             </div>
             <hr className="EditWarehouse__hr" />
@@ -62,31 +70,32 @@ function EditWarehouse (){
                     <section className="EditWarehouse__details--warehouse">
                         <h2 className="EditWarehouse__subtitle">Warehouse Details</h2>
                         <p className="EditWarehouse__label">Warehouse Name</p>
-                        <input type="text" name="WarehouseName" className="EditWarehouse__input" />
+                        <input type="text" name="WarehouseName" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Street Address</p>
-                        <input type="text" name="StreetAddress" className="EditWarehouse__input" />
+                        <input type="text" name="StreetAddress" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">City</p>
-                        <input type="text" name="City" className="EditWarehouse__input" />
+                        <input type="text" name="City" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Country</p>
-                        <input type="text" name="Country" className="EditWarehouse__input" />
+                        <input type="text" name="Country" className="EditWarehouse__input" required/>
                     </section>
                     <hr className="EditWarehouse__hr2" />
                     <section className="EditWarehouse__details--contact">
                         <h2 className="EditWarehouse__subtitle">Contact Details</h2>
                         <p className="EditWarehouse__label">Contact Name</p>
-                        <input type="text" name="ContactName" className="EditWarehouse__input" />
+                        <input type="text" name="ContactName" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Position</p>
-                        <input type="text" name="Position" className="EditWarehouse__input" />
+                        <input type="text" name="Position" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Phone Number</p>
-                        <input type="text" name="PhoneNumber" className="EditWarehouse__input" />
+                        <input type="text" name="PhoneNumber" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Email</p>
-                        <input type="text" name="Email" className="EditWarehouse__input" />
+                        <input type="text" name="Email" className="EditWarehouse__input" required/>
                     </section>
                 </div>
                 <div className="EditWarehouse__footer">
                     <div className="EditWarehouse__button">
-                        <button className="EditWarehouse__button--cancel" type="cancel">Cancel</button>
-                        <button className="EditWarehouse__button--save" type="submit">Save</button>
+                        <input type="hidden" name="action" value="" />
+                        <button className="EditWarehouse__button--cancel" type="cancel" onClick={handleBack}>Cancel</button>
+                        <button className="EditWarehouse__button--save" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>Save</button>
                     </div>
                 </div>
             </form>

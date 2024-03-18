@@ -5,6 +5,8 @@
 
 .overlap {
     margin: -4.3rem 1rem 0 1rem;
+    border: 1px solid $primary-white;
+    border-radius: 4px;
     position: relative;
     z-index: 1;
 
@@ -13,19 +15,19 @@
     }
 
     @include desktop {
-        margin: -5.5rem 8rem 0 8rem;
+        margin: -6.1rem 8rem 0 8rem;
     }
 }
 
 .overlap-disable {
-    margin: -1rem 1rem;
+    margin: 0rem 1rem;
 
     @include tablet {
-        margin: -1rem 2rem;
+        margin: 0 2rem;
     }
 
     @include desktop {
-        margin: -1rem 8rem;
+        margin: 0 8rem;
     }
 }
 
@@ -35,7 +37,7 @@
 
 
     &__form {
-        padding: 2rem 2rem 0 2rem;
+        padding: 2rem 2rem 1rem 2rem;
         width: 100%;
         gap: 1rem;
         display: flex;
@@ -48,13 +50,20 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        @include desktop {
+            margin: 0;
+            margin-bottom: 0.6rem;
+        }
     }
     &__header {
+        @include set-mobile-font("PageHeader");
         margin: 0 0 1rem 0;
         width: 7.2rem;
         height: 2.25rem;
 
         @include tablet {
+            @include set-desktop-tablet-font("PageHeader");
             margin: 0;
             display: flex;
             align-items: center;
@@ -77,9 +86,11 @@
     }
     &__input {
         @include set-form-inputfeild-style("Mobile");
+        @include set-icon-style($search-icon-url);
 
         @include tablet {
             @include set-form-inputfeild-style("Tablet");
+            width: 11.5rem;
         }
 
         @include desktop {
@@ -92,10 +103,12 @@
 
         @include tablet {
             @include set-button-style("Tablet", $primary-instock-indigo);
+            width: 10.5rem;
         }
 
         @include desktop {
             @include set-button-style("Desktop", $primary-instock-indigo);
+            width: 10.5rem;
         }
     }
 
@@ -115,10 +128,16 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        &:hover {
+            background-color: $background-light-blue;
+        }
     }
 
     &__line {
+        color: $secondary-cloud;
         width: 100%;
+        margin: 0;
     }
 
     &__sectionwraper {
@@ -174,7 +193,9 @@
         }
     }
     &__status {
+        @include set-mobile-font("LabelFont");
         @include tablet {
+            @include set-desktop-tablet-font("LabelFont");
             position: relative;
             left: -20px;
         }
@@ -238,9 +259,9 @@
         @include tablet {
             margin: 0;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: baseline;
-            gap: 3rem;
+            gap: 1rem;
         }
     }
 
@@ -248,8 +269,16 @@
         display: none;
         @include tablet {
             display: flex;
-            background-color: #F7F8F9B2;
-            padding: 1rem 2rem;
+            background-color: $background-light-grey;
+            color: $secondary-slate;
+            @include set-desktop-tablet-font("TableHeader");
+            font-weight: 600;
+            padding: 0.5rem 2rem;
+        }
+
+        @include desktop {
+            padding: 0.8rem 2rem;
+            // margin-left: 0.8rem;
         }
     }
 
@@ -308,9 +337,11 @@
 
         @include tablet {
             color: $secondary-slate;
+            background-color: $background-light-grey;
             display: block;
             margin: 0;
             @include set-desktop-tablet-font("TableHeader");
+            font-weight: 600;
         }
     }
     &__tablet-icon {

@@ -1,5 +1,6 @@
 import "./WarehousesList.scss";
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import deleteIcon from "./../../assets/icons/delete_outline-24px.svg";
 import editIcon from "./../../assets/icons/edit-24px.svg";
 import rightIcon from "./../../assets/icons/chevron_right-24px.svg";
@@ -14,6 +15,7 @@ import { InStockApi } from "../../utils/Util.js";
  */
 const WarehousesList = () => {
   const stockApi = new InStockApi();
+  const navigate  = useNavigate();
   //Added "warehouseList" state variable to show all warhouse's list
   const [warehouseList, setWarehouseList] = useState([]);
 
@@ -62,7 +64,7 @@ const WarehousesList = () => {
    */
   function handleSubmit(event) {
     event.preventDefault();
-    
+    navigate("/warehouse/add");
   } 
 
   return (
@@ -70,8 +72,10 @@ const WarehousesList = () => {
       <form className="warehouse-list__form"
         onSubmit={handleSubmit}>
         <div className="warehouse-list__title">Warehouses </div>
-        <input type="text" id="search" name="search" onClick={handleSearch} placeholder="Search..." className="warehouse-list__search"></input>
-        <button className="warehouse-list__button">+ Add New Warehouse</button>
+        <div className="warehouse-list__header-right">
+          <input type="text" id="search" name="search" onClick={handleSearch} placeholder="Search..." className="warehouse-list__search"></input>
+          <button className="warehouse-list__button">+ Add New Warehouse</button>
+        </div>
       </form>
 
       <ul className="warehouse-list__list">
@@ -105,10 +109,10 @@ const WarehousesList = () => {
             <li key={warehouse.id} className="warehouse-list__item">
               <div className="warehouse-list__warehouse">
                 <div className="warehouse-list__label">WAREHOUSE</div>
-                <div className="warehouse-list__warehouse-row">
+                <Link className="warehouse-list__warehouse-row" to={`/warehouse/${warehouse.id}`}>
                   <div>{warehouse.warehouse_name}</div>
                   <img className="warehouse-list__right-image" alt="RightIcon" src={rightIcon} />
-                </div>
+                </Link>
               </div>
 
               <div className="warehouse-list__address-tablet">
@@ -143,8 +147,9 @@ const WarehousesList = () => {
                 <img className="warehouse-list__actions-image"
                   src={deleteIcon} alt="DeleteIcon" onClick={handleDelete} />
 
-                <img className="warehouse-list__actions-image"
-                  src={editIcon} alt="EditIcon" onClick={handleEdit} />
+                <Link to={`/warehouse/${warehouse.id}/edit/`}>
+                  <img className="warehouse-list__actions-image"src={editIcon} alt="EditIcon" />
+                </Link>
               </div>
 
             </li>

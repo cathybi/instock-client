@@ -1,6 +1,6 @@
 import "./InventoryList.scss"
 import React, { useRef } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
@@ -8,6 +8,7 @@ import rightIcon from "../../assets/icons/chevron_right-24px.svg";
 
 function InventoryList({ inventoryList, displayWarehouse }) {
     const searchRef = useRef();
+    const navigate  = useNavigate();
 
     function handleSearch(event) {
         event.preventDefault();
@@ -19,16 +20,12 @@ function InventoryList({ inventoryList, displayWarehouse }) {
 
     function handleAddItem(event) {
         event.preventDefault();
-        console.log("handleAddItem button been clicked ");
+        navigate("/inventory/add");
     }
 
     function handleDelete(event) {
         event.preventDefault();
         console.log("Delete button click event");
-    }
-    function handleEdit(event) {
-        event.preventDefault();
-        console.log("Edit button click event");
     }
 
     return (
@@ -82,9 +79,9 @@ function InventoryList({ inventoryList, displayWarehouse }) {
                     inventoryList &&
                     inventoryList
                         .map((inventory, index) => (
-                            <>
+                            <div key={inventory.id}>
                                 {index !== 0 && <hr className="inventory__line" />}
-                                <li key={inventory.id} className="inventory__li">
+                                <li  className="inventory__li">
                                     <div className="inventory__sectionwraper">
                                         <div className="inventory__section--left">
                                             <div className="inventory__column">
@@ -124,10 +121,12 @@ function InventoryList({ inventoryList, displayWarehouse }) {
 
                                     <div className="inventory__actions">
                                         <img src={deleteIcon} alt="delete icon" onClick={handleDelete} />
-                                        <img src={editIcon} alt="edit icon" onClick={handleEdit} />
+                                        <Link to={`/inventory/${inventory.id}/edit/`}>
+                                            <img src={editIcon} alt="edit icon" />
+                                        </Link>
                                     </div>
                                 </li >
-                            </>
+                            </div>
                         ))
                 }
             </ul>
