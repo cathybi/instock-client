@@ -18,6 +18,11 @@ function WarehousesDetailsPage() {
     setInventoryList(inventoryList);
   };
 
+  const initInventoryList = async (id) => {
+    const inventoryList = await api.getInventoryList();
+    setInventoryList(inventoryList);
+};
+
   useEffect(() => {
     document.title = 'Warehouses Details Page';
     initWarehouse(warehouseId);
@@ -26,7 +31,7 @@ function WarehousesDetailsPage() {
   return (
     <div className="warehouses-details-page">
       <SelectedWarehouse warehouseDetail={warehouseDetail}/>
-      <InventoryList inventoryList={inventoryList} displayWarehouse={false} />
+      <InventoryList warehouseId={warehouseId} inventoryList={inventoryList} displayWarehouse={false} initInventoryList={initInventoryList}/>
     </div>
   );
 }

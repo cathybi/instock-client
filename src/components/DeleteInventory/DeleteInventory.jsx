@@ -3,6 +3,8 @@ import Modal from "react-modal";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import { InStockApi } from "../../utils/Util.js";
 
+Modal.setAppElement('#root');
+
 const DeleteInventory = ({isOpen, onRequestClose, inventoryToDelete}) => {
     const stockApi = new InStockApi();
 

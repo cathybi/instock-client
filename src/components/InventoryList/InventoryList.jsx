@@ -1,5 +1,5 @@
 import "./InventoryList.scss"
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
@@ -8,7 +8,7 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import rightIcon from "../../assets/icons/chevron_right-24px.svg";
 import DeleteInventory from "../DeleteInventory/DeleteInventory.jsx";
 
-function InventoryList({ inventoryList, displayWarehouse, initInventoryList}) {
+function InventoryList({ warehouseId, inventoryList, displayWarehouse, initInventoryList}) {
     const searchRef = useRef();
 
     //Added state Variables for delete functionality   
