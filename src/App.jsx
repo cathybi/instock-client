@@ -10,8 +10,6 @@ import AddNewInventoryPage from "./pages/AddNewInventoryPage/AddNewInventoryPage
 import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import DeleteInventory from "./components/DeleteInventory/DeleteInventory";
-import DeleteWarehouse from "./components/DeleteWarehouse/DeleteWarehouse";
 
 function App() {
   return (
@@ -20,19 +18,16 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<WarehousesPage />} />
-
           <Route path="/inventory" element={<InventoryPage />} />
-          <Route path="/inventory/:inventoryId" element={<InventoryDetailsPage />} />
-          <Route path="/inventory/add" element={<AddNewInventoryPage />} />
-          <Route path="/inventory/:inventoryId/edit" element={<EditInventoryPage />}/>
-
-          <Route path="/warehouse" element={<WarehousesPage />} />
-          <Route path="/warehouse/:warehouseId" element={<WarehousesDetailsPage />} />
+          
           <Route path="/warehouse/add" element={< AddWarehouse/>} />
-          <Route path="/warehouse/:warehouseId/edit/" element={< EditWarehouse/>} />
+          <Route path="/inventory/add" element={<AddNewInventoryPage />} />
 
-          <Route path="/inventory/deleteInventory" element={<DeleteInventory />} />
-          <Route path="/warehouse/deleteWarehouse" element={<DeleteWarehouse />} />
+          <Route path="/warehouse/:warehouseId" element={<WarehousesDetailsPage />} />
+          <Route path="/inventory/:inventoryId" element={<InventoryDetailsPage />} />
+
+          <Route path="/inventory/:inventoryId/edit" element={<EditInventoryPage />}/>
+          <Route path="/warehouse/:warehouseId/edit/" element={< EditWarehouse/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

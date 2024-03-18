@@ -6,38 +6,45 @@
 
 .delete {
     position: absolute;
-    z-index: 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     text-align: left;
     padding: 4%;
-    background-color: $primary-white;
-    box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
+    background-color: $primary-white;    
+    height: 48rem;
 
     @include tablet {
+        position: absolute;
+        top:12rem;
+        left:2.5rem;
         margin: auto;
-        width: 77%;
-        padding: 2% 2% 4% 8%;
-        border-radius: 4px;
-        margin-left: 10%;
-
-        @include desktop {
-            width: 50%;
-            padding: 1% 1% 2% 4%;
-            margin-left: 25%;
-        }
+        flex-direction: row;
+        width: 88%;
+        height:17rem;    
+        border-radius: 4px;       
     }
+
+    @include desktop {
+        width: 50%;
+        padding: 1% 1% 2% 4%;
+        margin-left: 25%;
+    }
+
 
     &__close-icon {
         height: 25px;
         margin-left: auto;
+
+        @include tablet {
+            position: absolute;
+            left: 93%;
+        }
     }
 
     &__text-container {
         margin: 0;
-        margin-bottom: 100vw;
-        // margin-bottom: 30px;
+        margin-bottom: 28rem;
 
         @include tablet {
             margin-bottom: 0;
@@ -45,17 +52,16 @@
         }
     }
 
-    &__text-container-title {
+    &__title {
         @include tablet {
             margin: 0 0;
             font-size: 1.9rem;
         }
     }
 
-    &__text-container-subtitle {
+    &__subtitle {
         @include tablet {
             width: 91%;
-
             font-size: 0.96rem;
             margin-bottom: 10%;
         }
@@ -71,36 +77,31 @@
             margin-left: auto;
             width: 30%;
             justify-content: space-between;
-
-            @include desktop {
-                padding-right: 6%;
-            }
         }
 
-        &-cancel {
-            border: 1.5px solid $secondary-cloud;
-            background-color: $primary-white;
-            color: $background-graphite;
-            border-radius: 20px;
-
-            min-width: 45%;
-            height: 36px;
-            padding: 0;
-
-            @include tablet {}
+        @include desktop {
+            padding-right: 6%;
         }
 
-        &-delete {
-            border-style: none;
-            border-radius: 20px;
-            color: $primary-white;
-            background-color: $red;
+    }
 
-            min-width: 45%;
-            height: 36px;
-            padding: 0;
+    &__cancel {
+        border: 1.5px solid $secondary-cloud;
+        background-color: $primary-white;
+        color: $background-graphite;
+        border-radius: 20px;
+        min-width: 45%;
+        height: 36px;
+        padding: 0;
+    }
 
-            @include tablet {}
-        }
+    &__delete {
+        border-style: none;
+        border-radius: 20px;
+        color: $primary-white;
+        background-color: $red;
+        min-width: 45%;
+        height: 36px;
+        padding: 0;
     }
 }
