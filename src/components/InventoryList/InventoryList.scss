@@ -15,7 +15,7 @@
     }
 
     @include desktop {
-        margin: -5.5rem 8rem 0 8rem;
+        margin: -6.1rem 8rem 0 8rem;
     }
 }
 
@@ -23,11 +23,11 @@
     margin: -1rem 1rem;
 
     @include tablet {
-        margin: -1rem 2rem;
+        margin: 0 2rem;
     }
 
     @include desktop {
-        margin: -1rem 8rem;
+        margin: 0 8rem;
     }
 }
 
@@ -37,7 +37,7 @@
 
 
     &__form {
-        padding: 2rem 2rem 0 2rem;
+        padding: 2rem 2rem 1rem 2rem;
         width: 100%;
         gap: 1rem;
         display: flex;
@@ -49,6 +49,11 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+        }
+
+        @include desktop {
+            margin: 0;
+            margin-bottom: 0.6rem;
         }
     }
     &__header {
@@ -254,9 +259,9 @@
         @include tablet {
             margin: 0;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: baseline;
-            gap: 3rem;
+            gap: 1rem;
         }
     }
 

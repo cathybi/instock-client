@@ -1,6 +1,6 @@
 import "./WarehousesList.scss";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import deleteIcon from "./../../assets/icons/delete_outline-24px.svg";
 import editIcon from "./../../assets/icons/edit-24px.svg";
 import rightIcon from "./../../assets/icons/chevron_right-24px.svg";
@@ -15,6 +15,7 @@ import { InStockApi } from "../../utils/Util.js";
  */
 const WarehousesList = () => {
   const stockApi = new InStockApi();
+  const navigate  = useNavigate();
   //Added "warehouseList" state variable to show all warhouse's list
   const [warehouseList, setWarehouseList] = useState([]);
 
@@ -63,7 +64,7 @@ const WarehousesList = () => {
    */
   function handleSubmit(event) {
     event.preventDefault();
-    
+    navigate("/warehouse/add");
   } 
 
   return (
@@ -146,8 +147,9 @@ const WarehousesList = () => {
                 <img className="warehouse-list__actions-image"
                   src={deleteIcon} alt="DeleteIcon" onClick={handleDelete} />
 
-                <img className="warehouse-list__actions-image"
-                  src={editIcon} alt="EditIcon" onClick={handleEdit} />
+                <Link to={`/warehouse/${warehouse.id}/edit/`}>
+                  <img className="warehouse-list__actions-image"src={editIcon} alt="EditIcon" />
+                </Link>
               </div>
 
             </li>

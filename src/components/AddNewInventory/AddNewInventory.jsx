@@ -1,10 +1,12 @@
-import axios from "axios";
-import { Link } from "react-router-dom";
+import "./AddNewInventory.scss";
+import { Link, useNavigate } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import React, { useState, useEffect } from "react";
-import "./AddNewInventory.scss";
+import { InStockApi } from "../../utils/Util";
 
 function AddNewInventory() {
+  const navigate  = useNavigate();
+  const api = new InStockApi();
   const [inventoryData, setInventoryData] = useState({
     warehouse_name: "",
     item_name: "",
@@ -23,10 +25,8 @@ function AddNewInventory() {
   useEffect(() => {
     async function fetchWarehouses() {
       try {
-        const response = await axios.get(
-          "http://localhost:5050/api/warehouses"
-        );
-        setWarehouses(response.data);
+        const warehouseList = await api.getwarehousesList();
+        setWarehouses(warehouseList);
       } catch (error) {
         console.error("Error fetching warehouses:", error);
       }
@@ -39,10 +39,8 @@ function AddNewInventory() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await axios.get(
-          `http://localhost:5050/api/inventories`
-        );
-        const categoriesData = response.data.map(
+        const inventorylist = await api.getInventoryList();
+        const categoriesData = inventorylist.map(
           (inventory) => inventory.category
         );
         const uniqueCategories = Array.from(new Set(categoriesData)); // Ensure unique categories
@@ -63,36 +61,23 @@ function AddNewInventory() {
     }));
   };
 
+  function handleBack() {
+    navigate(-1);
+  }
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const action = e.target.action.value;
+    if (action === "cancel") {
+      navigate(-1);
+      return;
+    }
     try {
       console.log("handlesubmit:", inventoryData);
       inventoryData.status = stockStatus;
-      const response = await axios.post(
-        `http://localhost:5050/api/inventories/`,
-        inventoryData
-      );
-      console.log("Request to BackEnd:", response);
-      const {
-        warehouse_name,
-        item_name,
-        description,
-        category,
-        status,
-        quantity,
-      } = response.data;
-
-      console.log(response.data.quantity);
-
+      const response = await api.addInventory(inventoryData);
       alert("Item updated successfully");
-      setInventoryData({
-        warehouse_name: warehouse_name,
-        item_name: item_name,
-        description: description,
-        category: category,
-        status: status,
-        quantity: Number(quantity),
-      });
+      navigate("/inventory");
     } catch (error) {
       console.error("Error updating inventory: ", error);
     }
@@ -102,13 +87,12 @@ function AddNewInventory() {
     <section className="new-inventory">
       <div className="new-inventory__nav">
         <div className="new-inventory__back">
-          <Link className="new-inventory__link" to="/inventory">
-            <img
-              src={arrowBack}
-              alt="arrow back"
-              className="new-inventory__arrowIcon"
-            />
-          </Link>
+          <img
+            src={arrowBack}
+            alt="arrow back"
+            className="new-inventory__arrowIcon"
+            onClick={handleBack}
+          />
           <h1 className="new-inventory__title">Add New Inventory Item</h1>
         </div>
       </div>
@@ -239,10 +223,11 @@ function AddNewInventory() {
         </div>
 
         <div className="new-inventory__button">
-          <button className="new-inventory__button--cancel" type="cancel">
+        <input type="hidden" name="action" value="" />
+          <button className="new-inventory__button--cancel" type="cancel"  onClick={() => document.getElementsByName('action')[0].value = 'cancel'}>
             Cancel
           </button>
-          <button className="new-inventory__button--submit" type="submit">
+          <button className="new-inventory__button--submit" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>
             + Add Item
           </button>
         </div>

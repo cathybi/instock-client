@@ -1,19 +1,19 @@
-import axios from "axios";
-import { Link } from "react-router-dom";
+import "./EditInventory.scss";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import "./EditInventory.scss";
+import { InStockApi } from "../../utils/Util";
 
 function EditInventory() {
   const [warehouses, setWarehouses] = useState([]);
+  const api = new InStockApi();
+  const navigate  = useNavigate();
   useEffect(() => {
     async function fetchWarehouses() {
       try {
-        const response = await axios.get(
-          "http://localhost:5050/api/warehouses"
-        );
-        setWarehouses(response.data);
+        const warehouseList = await api.getwarehousesList();
+        console.log(warehouseList);
+        setWarehouses(warehouseList);
       } catch (error) {
         console.error("Error fetching warehouses:", error);
       }
@@ -26,10 +26,8 @@ function EditInventory() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await axios.get(
-          `http://localhost:5050/api/inventories`
-        );
-        const categoriesData = response.data.map(
+        const inventoryList = await api.getInventoryList();
+        const categoriesData = inventoryList.map(
           (inventory) => inventory.category
         );
         const uniqueCategories = Array.from(new Set(categoriesData));
@@ -62,25 +60,14 @@ function EditInventory() {
   useEffect(() => {
     async function getInventoryDetail(inventoryId) {
       try {
-        const response = await axios.get(
-          `http://localhost:5050/api/inventories/${inventoryId}`
-        );
-        const {
-          warehouse_name,
-          item_name,
-          description,
-          category,
-          status,
-          quantity,
-        } = response.data;
-        // console.log(response.data);
+        const inventoryDetail = await api.getInventoryDetail(inventoryId);
         setInventoryData({
-          warehouse_name: warehouse_name,
-          item_name: item_name,
-          description: description,
-          category: category,
-          status: status,
-          quantity: Number(quantity),
+          warehouse_name: inventoryDetail.warehouse_name,
+          item_name: inventoryDetail.item_name,
+          description: inventoryDetail.description,
+          category: inventoryDetail.category,
+          status: inventoryDetail.status,
+          quantity: Number(inventoryDetail.quantity),
         });
       } catch (error) {
         if (error) {
@@ -103,32 +90,40 @@ function EditInventory() {
     }));
   };
 
+  function handleBack() {
+    navigate(-1);
+  }
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const action = e.target.action.value;
+    console.log(action);
+    if (action === "cancel") {
+      navigate(-1);
+      return;
+    }
     try {
       console.log("handlesubmit:", inventoryData);
       inventoryData.status = stockStatus;
-      const response = await axios.put(
-        `http://localhost:5050/api/inventories/${inventoryId}`,
-        inventoryData
-      );
+      const response = await api.updateInventory(inventoryId, inventoryData);
       console.log("Request to BackEnd:", response);
       alert("Item updated successfully");
+      navigate("/inventory");
     } catch (error) {
       console.error("Error updating inventory: ", error);
     }
   };
+
   return (
     <section className="edit-inventory">
       <div className="edit-inventory__nav">
         <div className="edit-inventory__back">
-          <Link className="edit-inventory__link" to="/inventory">
-            <img
-              src={arrowBack}
-              alt="arrow back"
-              className="edit-inventory__arrowIcon"
-            />
-          </Link>
+          <img
+            src={arrowBack}
+            alt="arrow back"
+            className="edit-inventory__arrowIcon"
+            onClick={handleBack}
+          />
           <h1 className="edit-inventory__title">Edit Inventory Item</h1>
         </div>
       </div>
@@ -259,10 +254,11 @@ function EditInventory() {
         </section>
 
         <section className="edit-inventory__button">
-          <button className="edit-inventory__button--cancel" type="cancel">
+          <input type="hidden" name="action" value="" />
+          <button className="edit-inventory__button--cancel" type="cancel" onClick={() => document.getElementsByName('action')[0].value = 'cancel'}>
             Cancel
           </button>
-          <button className="edit-inventory__button--submit" type="submit">
+          <button className="edit-inventory__button--submit" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>
             Save
           </button>
         </section>

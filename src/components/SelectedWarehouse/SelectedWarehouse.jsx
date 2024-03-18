@@ -2,25 +2,30 @@ import "./SelectedWarehouse.scss";
 import editIcon from "../../assets/icons/edit_white-24px.svg";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SelectedWarehouse({warehouseDetail}) {
+  const navigate  = useNavigate();
+
+  function handleBack() {
+    navigate(-1);
+  }
+
   return (
     <section className="selected-warehouse">
       <div className="selected-warehouse__nav">
         <div className="selected-warehouse__back">
-          <Link className="selected-warehouse__link" to="/">
-            <img
-              src={arrowBack}
-              alt="arrow back"
-              className="selected-warehouse__arrowIcon"
-            />
-          </Link>
+          <img
+            src={arrowBack}
+            alt="arrow back"
+            className="selected-warehouse__arrowIcon"
+            onClick={handleBack}
+          />
           <h1 className="selected-warehouse__title">{warehouseDetail.warehouse_name}</h1>
         </div>
 
         <div className="selected-warehouse__edit">
-          <Link className="selected-warehouse__link selected-warehouse__link-edit" to="/">
+          <Link className="selected-warehouse__link selected-warehouse__link-edit" to={`/warehouse/${warehouseDetail.id}/edit`}>
             <img
               src={editIcon}
               alt="edit icon"

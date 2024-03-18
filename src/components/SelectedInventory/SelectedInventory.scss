@@ -25,13 +25,10 @@
 .inventory-item {
   &__nav {
     border-bottom: 1px solid $secondary-cloud;
-    padding: 0 $m-margin;
+    padding: 2rem 2rem 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @include tablet {
-      padding: 0 $t-margin;
-    }
   }
 
   &__link {
@@ -89,6 +86,7 @@
   @include tablet {
     display: flex;
     justify-content: space-between;
+    padding: 2rem;
   }
 
   &__hr {
@@ -96,33 +94,47 @@
     color: $secondary-cloud;
 
     @include tablet {
+      // flex: 1;
       display: block;
     }
   }
 
+  &__box-one {
+    @include tablet {
+      flex: 2;
+    }
+  }
+
   &__box-two {
-    width: 15rem;
-    height: 15rem;
+    // width: 15rem;
+    // height: 15rem;
     padding-right: 5%;
     display: flex;
     justify-content: space-between;
   
     @include tablet {
-      padding-left: 5%;
-      padding-right: 5%;
-      width: 25rem;
-      height: 15rem;
+      flex: 2;
+      justify-content: space-around
+      // padding-left: 5%;
+      // padding-right: 5%;
+      // width: 25rem;
+      // height: 15rem;
     }
   
     @include desktop {
-      width: 35rem;
-      height: 15rem;
+      // width: 35rem;
+      // height: 15rem;
     }
   }
 
   &__information {
     @include set-mobile-font("LabelFont");
     margin-top: 1px;
+
+    @include tablet {
+      width: 70%;
+      padding-bottom: 1rem;
+    }
   }
 
   &__heading {
@@ -147,6 +159,10 @@
     background: #15846312;
     padding: 0.1rem 0.5rem;
     border-radius: 1.25rem;
+
+    @include tablet {
+      margin-bottom: 1rem;
+    }
   }
 
   &.out-of-stock {

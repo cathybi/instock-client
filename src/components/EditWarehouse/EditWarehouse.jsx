@@ -29,8 +29,17 @@ function EditWarehouse (){
         getWarehouseOrigData();
     },[warehouseId]);
 
+    function handleBack() {
+        navigate(-1);
+      }
+
     function handleFormSubmit (event){
         event.preventDefault();
+        const action = event.target.action.value;
+        if (action === "cancel") {
+          navigate(-1);
+          return;
+        }
         const updatedWarehouse = {
             warehouse_name: event.target.WarehouseName.value,
             address: event.target.StreetAddress.value,
@@ -53,7 +62,7 @@ function EditWarehouse (){
     return (
         <section className="EditWarehouse">
             <div className="EditWarehouse__title--section">
-                <Link to="/"><img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" /></Link>
+                <img className="EditWarehouse__arrowBack" src={arrowBack} alt="arrowBack" onClick={handleBack}/>
                 <h1 className="EditWarehouse__title">Edit Warehouse</h1>
             </div>
             <hr className="EditWarehouse__hr" />
@@ -85,8 +94,9 @@ function EditWarehouse (){
                 </div>
                 <div className="EditWarehouse__footer">
                     <div className="EditWarehouse__button">
-                        <button className="EditWarehouse__button--cancel" type="cancel">Cancel</button>
-                        <button className="EditWarehouse__button--save" type="submit">Save</button>
+                        <input type="hidden" name="action" value="" />
+                        <button className="EditWarehouse__button--cancel" type="cancel" onClick={() => document.getElementsByName('action')[0].value = 'cancel'}>Cancel</button>
+                        <button className="EditWarehouse__button--save" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>Save</button>
                     </div>
                 </div>
             </form>
