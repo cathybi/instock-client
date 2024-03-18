@@ -79,9 +79,9 @@ function InventoryList({ inventoryList, displayWarehouse }) {
                     inventoryList &&
                     inventoryList
                         .map((inventory, index) => (
-                            <>
+                            <div key={inventory.id}>
                                 {index !== 0 && <hr className="inventory__line" />}
-                                <li key={inventory.id} className="inventory__li">
+                                <li  className="inventory__li">
                                     <div className="inventory__sectionwraper">
                                         <div className="inventory__section--left">
                                             <div className="inventory__column">
@@ -126,7 +126,7 @@ function InventoryList({ inventoryList, displayWarehouse }) {
                                         </Link>
                                     </div>
                                 </li >
-                            </>
+                            </div>
                         ))
                 }
             </ul>
