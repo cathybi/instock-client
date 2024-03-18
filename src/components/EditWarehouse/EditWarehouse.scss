@@ -9,8 +9,9 @@
     margin: 0;
 }
 .EditWarehouse {
+    margin: 0 1rem;
     background-color: white;
-    top: -6.5rem;
+    top: -4.5rem;
     position: relative;
     box-shadow: 0 2px 5px rgba(1,1,1,0.1);
     @include desktop {
@@ -38,11 +39,9 @@
     &__title--section {
         display: flex;
         align-items: baseline;
-        margin: 0 1.5rem;
         box-shadow: 0 2px 5px rgba(1, 1, 1, 0.1);
     }
     &__text {
-        margin: 0 1.5rem;
         padding: 2rem;
         box-shadow: 0 2px 5px rgba(1, 1, 1, 0.1);
         @include tablet {
