@@ -45,12 +45,14 @@
 
     @if($screenType == "Desktop") {
         width: 17.125rem;
-    }  
-
-     &:focus {
-       outline-color: $primary-instock-indigo;
     }
-
+    &::placeholder {
+        color: $secondary-slate;
+        font-size: small;
+    }
+    &:focus {
+        outline-color: $primary-instock-indigo;
+    }
     &--error {
         border: 1.5px solid $red;
     }
