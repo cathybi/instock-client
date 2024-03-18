@@ -8,7 +8,7 @@ function InventoryPage() {
     const [inventoryList, setInventoryList] = useState("");
     const api = new InStockApi();
 
-    const initInventoryList = async () => {
+    const initInventoryList = async (id) => {
         const inventoryList = await api.getInventoryList();
         setInventoryList(inventoryList);
     };
@@ -20,7 +20,10 @@ function InventoryPage() {
 
     return (
         <div className="inventory-page">
-            <InventoryList inventoryList={inventoryList} displayWarehouse={true}/>
+            <InventoryList warehouseId={null}
+                        inventoryList={inventoryList} 
+                          displayWarehouse={true}
+                          initInventoryList={initInventoryList}/>
         </div>
     );
 }

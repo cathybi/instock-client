@@ -1,1 +1,107 @@
-// DeleteWarehouse and DeleteInventory has the same styling
+@use "./../../styles/partials/mixins" as *;
+@use "./../../styles/partials/mixins-mobile" as *;
+@use "./../../styles/partials/mixins-desktop-tablet" as *;
+@use "./../../styles/partials/typography" as *;
+@use "./../../styles/partials/variables" as *;
+
+.delete {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 4%;
+    background-color: $primary-white;    
+    height: 50rem;
+
+    @include tablet {
+        position: absolute;
+        top:12rem;
+        left:2.5rem;
+        margin: auto;
+        flex-direction: row;
+        width: 88%;
+        height:17rem;    
+        border-radius: 4px;       
+    }
+
+    @include desktop {
+        width: 50%;
+        padding: 1% 1% 2% 4%;
+        margin-left: 25%;
+    }
+
+
+    &__close-icon {
+        height: 25px;
+        margin-left: auto;
+
+        @include tablet {
+            position: absolute;
+            left: 93%;
+        }
+    }
+
+    &__text-container {
+        margin: 0;
+        margin-bottom: 28rem;
+
+        @include tablet {
+            margin-bottom: 0;
+            width: 90%;
+        }
+    }
+
+    &__title {
+        @include tablet {
+            margin: 0 0;
+            font-size: 1.9rem;
+        }
+    }
+
+    &__subtitle {
+        @include tablet {
+            width: 91%;
+            font-size: 0.96rem;
+            margin-bottom: 10%;
+        }
+    }
+
+    &__button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        @include tablet {
+            align-items: right;
+            margin-left: auto;
+            width: 30%;
+            justify-content: space-between;
+        }
+
+        @include desktop {
+            padding-right: 6%;
+        }
+
+    }
+
+    &__cancel {
+        border: 1.5px solid $secondary-cloud;
+        background-color: $primary-white;
+        color: $background-graphite;
+        border-radius: 20px;
+        min-width: 45%;
+        height: 36px;
+        padding: 0;
+    }
+
+    &__delete {
+        border-style: none;
+        border-radius: 20px;
+        color: $primary-white;
+        background-color: $red;
+        min-width: 45%;
+        height: 36px;
+        padding: 0;
+    }
+}
