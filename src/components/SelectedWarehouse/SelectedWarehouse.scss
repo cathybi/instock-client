@@ -12,6 +12,7 @@
   padding: 0;
   margin: -4.4rem 1rem 0 1rem;
   position: relative;
+  border-radius: 4px;
   z-index: 1;
 
   @include tablet {
@@ -24,11 +25,14 @@
 
   &__nav {
     border-bottom: 1px solid $secondary-cloud;
-    padding-left: $m-margin;
-    padding-right: $m-margin;
+    padding: 0 $m-margin;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include tablet {
+      padding: 0 $t-margin;
+    }
   }
 
   &__link {
@@ -38,16 +42,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 50%;
     background-color: #2E66E6;
+
+    @include tablet {
+      width: 81px;
+      height: 38px;
+      border-radius: 20px;
+      gap: 10px;
+      padding: 0.5rem, 1rem;
+    }
   }
-  &__editIcon {
+  &__edit-icon {
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  &__edit-label {
+    display: none;
+    color: white;
+    @include tablet {
+      display: block;
+    }
   }
   &__back {
     display: flex;
@@ -56,10 +75,6 @@
   &__edit {
     display: flex;
     margin-right: 2rem;
-
-    @include tablet {
-      margin-right: 3rem;
-    }
   }
 
   &__title {
@@ -68,6 +83,12 @@
   }
   &__details {
     @include set-mobile-font("LabelFont");
+  }
+  &__details1 {
+    margin-bottom: 1px;
+  }
+  &__details2 {
+    margin-top: 1px;
   }
 
   &__informaion {
