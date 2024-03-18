@@ -15,7 +15,7 @@ function AddWarehouse (){
     function handleFormSubmit (event){
         event.preventDefault();
         const action = event.target.action.value;
-        if (action === "cancel") {
+        if (action === "cancel" || action==="") {
           navigate(-1);
           return;
         }
@@ -74,7 +74,7 @@ function AddWarehouse (){
                 <div className="addWarehouse__footer">
                     <div className="addWarehouse__button">
                         <input type="hidden" name="action" value="" />
-                        <button className="addWarehouse__button--cancel" type="cancel" onClick={() => document.getElementsByName('action')[0].value = 'cancel'}>Cancel</button>
+                        <button className="addWarehouse__button--cancel" type="cancel" onClick={handleBack}>Cancel</button>
                         <button className="addWarehouse__button--submit" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>+ Add Warehouse</button>
                     </div>
                 </div>

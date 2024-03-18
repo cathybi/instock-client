@@ -68,7 +68,7 @@ function AddNewInventory() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const action = e.target.action.value;
-    if (action === "cancel") {
+    if (action === "cancel" || action==="") {
       navigate(-1);
       return;
     }
@@ -228,7 +228,7 @@ function AddNewInventory() {
 
         <div className="new-inventory__button">
         <input type="hidden" name="action" value="" />
-          <button className="new-inventory__button--cancel" type="cancel"  onClick={() => document.getElementsByName('action')[0].value = 'cancel'}>
+          <button className="new-inventory__button--cancel" type="cancel"  onClick={handleBack}>
             Cancel
           </button>
           <button className="new-inventory__button--submit" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>

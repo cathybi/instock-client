@@ -98,7 +98,7 @@ function EditInventory() {
     e.preventDefault();
     const action = e.target.action.value;
     console.log(action);
-    if (action === "cancel") {
+    if (action === "cancel" || action==="") {
       navigate(-1);
       return;
     }
@@ -259,7 +259,7 @@ function EditInventory() {
 
         <section className="edit-inventory__button">
           <input type="hidden" name="action" value="" />
-          <button className="edit-inventory__button--cancel" type="cancel" onClick={() => document.getElementsByName('action')[0].value = 'cancel'}>
+          <button className="edit-inventory__button--cancel" type="cancel" onClick={handleBack}>
             Cancel
           </button>
           <button className="edit-inventory__button--submit" type="submit" onClick={() => document.getElementsByName('action')[0].value = 'save'}>
