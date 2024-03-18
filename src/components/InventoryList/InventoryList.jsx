@@ -1,7 +1,7 @@
 import "./InventoryList.scss"
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import sortIcon from "../../assets/icons/sort-24px.svg";
@@ -10,6 +10,7 @@ import DeleteInventory from "../DeleteInventory/DeleteInventory.jsx";
 
 function InventoryList({ warehouseId, inventoryList, displayWarehouse, initInventoryList}) {
     const searchRef = useRef();
+    const navigate  = useNavigate();
 
     //Added state Variables for delete functionality   
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -25,7 +26,7 @@ function InventoryList({ warehouseId, inventoryList, displayWarehouse, initInven
 
     function handleAddItem(event) {
         event.preventDefault();
-        console.log("handleAddItem button been clicked ");
+        navigate("/inventory/add");
     } 
 
     function closeModal() {
