@@ -1,5 +1,5 @@
 import "./AddNewInventory.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import React, { useState, useEffect } from "react";
 import { InStockApi } from "../../utils/Util";
@@ -75,7 +75,7 @@ function AddNewInventory() {
     try {
       console.log("handlesubmit:", inventoryData);
       inventoryData.status = stockStatus;
-      const response = await api.addInventory(inventoryData);
+      await api.addInventory(inventoryData);
       alert("Item updated successfully");
       navigate("/inventory");
     } catch (error) {
@@ -116,6 +116,7 @@ function AddNewInventory() {
               className="new-inventory__input"
               placeholder="Item Name"
               onChange={handleChange}
+              required
             />
             <label className="new-inventory__label" htmlFor="description">
               Description
@@ -128,6 +129,7 @@ function AddNewInventory() {
               className="new-inventory__input"
               placeholder="Please enter a brief item description..."
               onChange={handleChange}
+              required
             />
             <label className="new-inventory__label" htmlFor="category">
               Category
@@ -138,6 +140,7 @@ function AddNewInventory() {
               value={inventoryData.category}
               className="new-inventory__input new-inventory__input--custom-select"
               onChange={handleChange}
+              required
             >
               <option value="" className="new-inventory__select ">
                 Please Select
@@ -195,6 +198,7 @@ function AddNewInventory() {
                   className="new-inventory__input"
                   placeholder="0"
                   onChange={handleChange}
+                  required
                 />
               </div>
             )}

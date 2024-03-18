@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { InStockApi } from "../../utils/Util";
 import { useParams } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import "../EditWarehouse/EditWarehouse.scss"
 import { useEffect } from "react";
-import WarehousesPage from "../../pages/WarehousesPage/WarehousesPage";
 
 function EditWarehouse (){
 
@@ -71,25 +70,25 @@ function EditWarehouse (){
                     <section className="EditWarehouse__details--warehouse">
                         <h2 className="EditWarehouse__subtitle">Warehouse Details</h2>
                         <p className="EditWarehouse__label">Warehouse Name</p>
-                        <input type="text" name="WarehouseName" className="EditWarehouse__input" />
+                        <input type="text" name="WarehouseName" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Street Address</p>
-                        <input type="text" name="StreetAddress" className="EditWarehouse__input" />
+                        <input type="text" name="StreetAddress" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">City</p>
-                        <input type="text" name="City" className="EditWarehouse__input" />
+                        <input type="text" name="City" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Country</p>
-                        <input type="text" name="Country" className="EditWarehouse__input" />
+                        <input type="text" name="Country" className="EditWarehouse__input" required/>
                     </section>
                     <hr className="EditWarehouse__hr2" />
                     <section className="EditWarehouse__details--contact">
                         <h2 className="EditWarehouse__subtitle">Contact Details</h2>
                         <p className="EditWarehouse__label">Contact Name</p>
-                        <input type="text" name="ContactName" className="EditWarehouse__input" />
+                        <input type="text" name="ContactName" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Position</p>
-                        <input type="text" name="Position" className="EditWarehouse__input" />
+                        <input type="text" name="Position" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Phone Number</p>
-                        <input type="text" name="PhoneNumber" className="EditWarehouse__input" />
+                        <input type="text" name="PhoneNumber" className="EditWarehouse__input" required/>
                         <p className="EditWarehouse__label">Email</p>
-                        <input type="text" name="Email" className="EditWarehouse__input" />
+                        <input type="text" name="Email" className="EditWarehouse__input" required/>
                     </section>
                 </div>
                 <div className="EditWarehouse__footer">

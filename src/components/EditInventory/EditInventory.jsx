@@ -1,5 +1,5 @@
 import "./EditInventory.scss";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import arrowBack from "./../../assets/icons/arrow_back-24px.svg";
 import React, { useState, useEffect } from "react";
 import { InStockApi } from "../../utils/Util";
@@ -147,6 +147,7 @@ function EditInventory() {
               className="edit-inventory__input"
               placeholder="Television"
               onChange={handleChange}
+              required
             />
             <label className="edit-inventory__label" htmlFor="description">
               Description
@@ -159,6 +160,7 @@ function EditInventory() {
               className="edit-inventory__input edit-inventory__input--wrapper"
               placeholder="This 50'', 4K LED TV provides a crystal-clear picture and vivid colors."
               onChange={handleChange}
+              required
             />
             <label className="edit-inventory__label" htmlFor="category">
               Category
@@ -169,6 +171,7 @@ function EditInventory() {
               value={inventoryData.category}
               className="edit-inventory__input edit-inventory__input--custom-select"
               onChange={handleChange}
+              required
             >
               <option value="" className="edit-inventory__select">
                 Please Select
@@ -224,8 +227,9 @@ function EditInventory() {
                   id="quantity"
                   value={inventoryData.quantity}
                   className="edit-inventory__input"
-                  placeholder="1"
+                  placeholder="0"
                   onChange={handleChange}
+                  required
                 />
               </div>
             )}
