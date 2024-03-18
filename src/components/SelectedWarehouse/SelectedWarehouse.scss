@@ -87,11 +87,11 @@
   }
 
   &__informaion {
-    padding-left: $m-margin;
     border-bottom: 1px solid $secondary-cloud;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
 
     @include tablet {
+      padding: 0 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -100,6 +100,7 @@
   }
 
   &__address-container {
+
     @include tablet {
       // margin-top: 2rem;
       width: 30%;

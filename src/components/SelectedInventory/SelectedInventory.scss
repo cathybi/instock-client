@@ -80,8 +80,7 @@
 }
 
 .inventory-description {
-  padding-left: $m-margin;
-  padding-right: $m-margin;
+  padding: 2rem 2rem 1rem 2rem;
 
   @include tablet {
     display: flex;
@@ -106,24 +105,15 @@
   }
 
   &__box-two {
-    // width: 15rem;
-    // height: 15rem;
     padding-right: 5%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20rem;
   
     @include tablet {
       flex: 2;
-      justify-content: space-around
-      // padding-left: 5%;
-      // padding-right: 5%;
-      // width: 25rem;
-      // height: 15rem;
-    }
-  
-    @include desktop {
-      // width: 35rem;
-      // height: 15rem;
+      gap: 0;
+      justify-content: space-around;
     }
   }
 
@@ -175,4 +165,16 @@
     padding: 0.1rem 0.1rem;
     border-radius: 1.25rem;
   }
+}
+
+.description {
+  padding: 0 0 1rem 0;
+}
+
+.item {
+  padding: 0 0 1rem 0;
+}
+
+.status {
+  padding: 0 0 1rem 0;
 }
